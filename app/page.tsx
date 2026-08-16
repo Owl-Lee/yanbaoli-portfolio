@@ -1,241 +1,328 @@
-const projects = [
-  {
-    number: "01",
-    title: "AdMind",
-    label: "Full-stack · Applied AI",
-    description:
-      "A full-stack ad placement system that uses the Claude API to score placements and move beyond simple matching toward intensity-based tiering.",
-    contribution:
-      "Built the Java backend independently, including entity models, CRUD operations, and the core scoring workflow.",
-    stack: ["Java", "Spring Boot", "Spring Data JPA", "MySQL", "Claude API"],
-  },
-  {
-    number: "02",
-    title: "Multimodal Medical Image Fusion",
-    label: "Deep learning · Research",
-    description:
-      "A deep learning system for combining complementary information across medical imaging modalities into a clearer fused result.",
-    contribution:
-      "Led core algorithm and model architecture design, implemented the PyTorch pipeline, and coordinated a four-person research team.",
-    stack: ["Python", "PyTorch", "Deep Learning", "Data Integration"],
-    award: "Innovation & Entrepreneurship Competition · Excellence Award",
-  },
-  {
-    number: "03",
-    title: "Wave Energy System Optimization",
-    label: "Machine learning · Optimization",
-    description:
-      "A modeling workflow that predicts system behavior and searches for stronger damping parameters for a wave-energy system.",
-    contribution:
-      "Combined Random Forest fitting with genetic algorithm and Bayesian EI optimization, alongside data cleaning and preprocessing.",
-    stack: ["Python", "Random Forest", "Genetic Algorithm", "Bayesian Optimization"],
-    award: "CUMCM · Third Prize",
-  },
-];
+"use client";
 
-const skills = [
-  {
-    title: "Languages",
-    values: "Java, Python, C, SQL",
+import { useState } from "react";
+
+type Language = "en" | "zh";
+
+const content = {
+  en: {
+    homepage: "Personal Homepage",
+    nav: ["About", "Education", "Projects", "Awards"],
+    role: "Software Engineer · Applied AI Developer",
+    intro:
+      "Information Systems student at Stony Brook University. I enjoy building reliable software systems and turning machine learning ideas into practical applications.",
+    location: "Stony Brook, New York",
+    statusTitle: "Currently",
+    status:
+      "I’m looking for software engineering and applied AI opportunities where I can contribute, learn quickly, and build useful systems with a strong team.",
+    aboutTitle: "Biography",
+    about: [
+      "My name is Yanbao Li, and I also go by Yan. I am currently studying Information Systems at Stony Brook University after transferring from Anhui University, where I studied Digital Media Technology.",
+      "My interests sit at the intersection of backend engineering, applied machine learning, and data-driven problem solving. I have built Java services, designed deep learning models, and worked on mathematical optimization problems in team competitions.",
+      "I care about understanding how a system works—not only getting a model or feature to run. I am especially interested in roles where thoughtful engineering can make AI systems more reliable and useful.",
+    ],
+    educationTitle: "Education",
+    education: [
+      {
+        date: "Jul 2026 — Present",
+        school: "Stony Brook University",
+        degree: "Bachelor’s studies in Information Systems",
+        place: "Stony Brook, New York",
+      },
+      {
+        date: "Aug 2024 — Jun 2026",
+        school: "Anhui University",
+        degree: "Digital Media Technology",
+        place: "Hefei, China",
+        detail: "Co-Lead, Mathematical Modeling Club · Teaching Assistant, Probability Theory",
+      },
+    ],
+    projectsTitle: "Selected Projects",
+    projectsIntro: "Project pages and source repositories are being prepared.",
+    projects: [
+      {
+        date: "2026",
+        title: "AdMind",
+        subtitle: "Full-stack ad placement system",
+        body: "Built the backend with Spring Boot, Spring Data JPA, and MySQL. Integrated the Claude API to score ad placements and support intensity-based tiering.",
+        tags: "Java · Spring Boot · MySQL · Claude API",
+      },
+      {
+        date: "2024—25",
+        title: "Multimodal Medical Image Fusion",
+        subtitle: "Deep learning research project",
+        body: "Led algorithm and model architecture design for a PyTorch-based multimodal image fusion system, while coordinating research and experiments across a four-person team.",
+        tags: "Python · PyTorch · Deep Learning",
+      },
+      {
+        date: "2025",
+        title: "Wave Energy System Optimization",
+        subtitle: "Machine learning and optimization",
+        body: "Combined Random Forest fitting with genetic algorithm and Bayesian EI optimization to improve prediction and search for better damping parameters.",
+        tags: "Python · Random Forest · Bayesian Optimization",
+      },
+    ],
+    awardsTitle: "Awards & Leadership",
+    awards: [
+      ["2025", "CUMCM Mathematical Modeling Competition", "Third Prize"],
+      ["2025", "Innovation & Entrepreneurship Competition", "Excellence Award"],
+      ["2024—26", "Mathematical Modeling Club, Anhui University", "Co-Lead"],
+      ["Anhui", "Probability Theory", "Teaching Assistant"],
+    ],
+    sidebar: {
+      profile: "Profile",
+      school: "Stony Brook University",
+      major: "Information Systems",
+      interests: "Interests",
+      interestsList: ["Backend Systems", "Applied AI", "Machine Learning", "Data & Optimization"],
+      tools: "Technical Skills",
+      toolsList: ["Java · Python · C · SQL", "Spring Boot · JPA · MySQL", "PyTorch · Pandas · NumPy", "Git · MATLAB"],
+      contact: "Contact",
+    },
+    footer: "Designed and built by Yanbao Li.",
+    download: "CV / Résumé",
+    repoSoon: "Repository soon",
+    photoRole: "Software & AI",
+    photoNote: "Photo can be added later",
   },
-  {
-    title: "Backend & Data",
-    values: "Spring Boot, Spring Data JPA, MySQL, Pandas, NumPy",
+  zh: {
+    homepage: "个人主页",
+    nav: ["关于我", "教育经历", "项目", "奖项"],
+    role: "软件工程师 · AI 应用开发",
+    intro:
+      "石溪大学 Information Systems 专业学生。我喜欢构建可靠的软件系统，也希望把机器学习想法做成真正有用的应用。",
+    location: "美国纽约州石溪",
+    statusTitle: "近期动态",
+    status:
+      "我正在寻找软件工程与 AI 应用开发相关机会，希望加入优秀的团队，在快速学习的同时参与构建真正有价值的系统。",
+    aboutTitle: "个人简介",
+    about: [
+      "我叫 Yanbao Li，也可以叫我 Yan。目前就读于石溪大学 Information Systems 专业；转学之前，我在安徽大学学习数字媒体技术。",
+      "我的兴趣主要集中在后端工程、应用型机器学习和数据驱动的问题解决。我做过 Java 后端服务、深度学习模型，也在团队竞赛中解决过数学建模与优化问题。",
+      "我不仅关注模型或功能能否运行，也希望真正理解整个系统如何工作。我尤其希望参与那些能通过扎实工程，让 AI 系统变得更可靠、更实用的工作。",
+    ],
+    educationTitle: "教育经历",
+    education: [
+      {
+        date: "2026 年 7 月 — 至今",
+        school: "石溪大学",
+        degree: "Information Systems 本科学习",
+        place: "美国纽约州石溪",
+      },
+      {
+        date: "2024 年 8 月 — 2026 年 6 月",
+        school: "安徽大学",
+        degree: "数字媒体技术",
+        place: "中国合肥",
+        detail: "数学建模社团联合负责人 · 概率论助教",
+      },
+    ],
+    projectsTitle: "主要项目",
+    projectsIntro: "项目页面与代码仓库正在整理中。",
+    projects: [
+      {
+        date: "2026",
+        title: "AdMind",
+        subtitle: "全栈广告投放系统",
+        body: "使用 Spring Boot、Spring Data JPA 和 MySQL 完成后端开发，并接入 Claude API 对广告位进行评分，实现基于投放强度的分级匹配。",
+        tags: "Java · Spring Boot · MySQL · Claude API",
+      },
+      {
+        date: "2024—25",
+        title: "多模态医学图像融合",
+        subtitle: "深度学习研究项目",
+        body: "负责基于 PyTorch 的多模态图像融合算法与模型架构设计，并协调四人团队完成研究写作与实验设计。",
+        tags: "Python · PyTorch · 深度学习",
+      },
+      {
+        date: "2025",
+        title: "波浪能系统优化",
+        subtitle: "机器学习与参数优化",
+        body: "结合随机森林拟合、遗传算法和贝叶斯 EI 优化提升预测效果，并搜索更优的阻尼参数。",
+        tags: "Python · 随机森林 · 贝叶斯优化",
+      },
+    ],
+    awardsTitle: "奖项与经历",
+    awards: [
+      ["2025", "全国大学生数学建模竞赛", "三等奖"],
+      ["2025", "创新创业竞赛", "优秀奖"],
+      ["2024—26", "安徽大学数学建模社团", "联合负责人"],
+      ["安徽大学", "概率论课程", "助教"],
+    ],
+    sidebar: {
+      profile: "基本信息",
+      school: "石溪大学",
+      major: "Information Systems",
+      interests: "兴趣方向",
+      interestsList: ["后端系统", "AI 应用开发", "机器学习", "数据分析与优化"],
+      tools: "技术栈",
+      toolsList: ["Java · Python · C · SQL", "Spring Boot · JPA · MySQL", "PyTorch · Pandas · NumPy", "Git · MATLAB"],
+      contact: "联系方式",
+    },
+    footer: "由 Yanbao Li 设计与开发。",
+    download: "下载简历",
+    repoSoon: "代码即将公开",
+    photoRole: "软件工程与 AI",
+    photoNote: "之后可添加个人照片",
   },
-  {
-    title: "AI & Modeling",
-    values: "PyTorch, Random Forest, Genetic Algorithms, Bayesian Optimization",
-  },
-  {
-    title: "Tools",
-    values: "Git, MATLAB",
-  },
-];
+};
 
 export default function Home() {
+  const [language, setLanguage] = useState<Language>("en");
+  const t = content[language];
+
   return (
     <main>
-      <nav className="nav shell" aria-label="Primary navigation">
-        <a className="wordmark" href="#top" aria-label="Yanbao Li, home">
-          YL<span>.</span>
-        </a>
-        <div className="navLinks">
-          <a href="#projects">Projects</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <a
-          className="navResume"
-          href="/Yanbao-Li-Resume.docx"
-          download
-          aria-label="Download Yanbao Li's resume"
-        >
-          Résumé <span aria-hidden="true">↘</span>
-        </a>
-      </nav>
-
-      <section className="hero shell" id="top">
-        <div className="heroCopy">
-          <p className="eyebrow"><span /> Hello, I&apos;m Yanbao.</p>
-          <h1>
-            I build software that turns
-            <em> ambitious ideas</em> into useful systems.
-          </h1>
-          <p className="heroIntro">
-            Information Systems student at Stony Brook University, focused on
-            software engineering and applied AI.
-          </p>
-          <div className="heroActions">
-            <a className="primaryButton" href="#projects">
-              Explore my work <span aria-hidden="true">↓</span>
-            </a>
-            <a
-              className="textLink"
-              href="mailto:liyanbao522@gmail.com"
-            >
-              Let&apos;s talk <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </div>
-
-        <aside className="heroCard" aria-label="Current status">
-          <div className="monogram" aria-hidden="true">YL</div>
-          <div className="statusLine">
-            <span className="statusDot" />
-            <span>Open to opportunities</span>
-          </div>
-          <div className="heroCardRule" />
-          <p>Software Engineering</p>
-          <p>Applied AI / ML</p>
-          <div className="heroCardFooter">
-            <span>Stony Brook, NY</span>
-            <span>2026</span>
-          </div>
-        </aside>
-      </section>
-
-      <section className="ticker" aria-label="Areas of interest">
-        <div className="tickerInner shell">
-          <span>Full-stack development</span><i>✦</i>
-          <span>Applied artificial intelligence</span><i>✦</i>
-          <span>Data-driven systems</span><i>✦</i>
-          <span>Human-centered products</span>
-        </div>
-      </section>
-
-      <section className="projects shell section" id="projects">
-        <div className="sectionHeading">
-          <div>
-            <p className="sectionKicker">Selected work</p>
-            <h2>Projects in progress.</h2>
-          </div>
-          <p>
-            Three explorations across backend engineering, deep learning, and
-            mathematical optimization. Demos and repositories are coming soon.
-          </p>
-        </div>
-
-        <div className="projectList">
-          {projects.map((project) => (
-            <article className="projectCard" key={project.number}>
-              <div className="projectTopline">
-                <span>{project.number}</span>
-                <span className="comingSoon">Case study coming soon</span>
-              </div>
-              <p className="projectLabel">{project.label}</p>
-              <h3>{project.title}</h3>
-              <p className="projectDescription">{project.description}</p>
-              <p className="projectContribution">{project.contribution}</p>
-              {project.award && <p className="award">✦ {project.award}</p>}
-              <div className="tags" aria-label={`${project.title} technologies`}>
-                {project.stack.map((item) => <span key={item}>{item}</span>)}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="about section" id="about">
-        <div className="shell aboutGrid">
-          <div className="aboutIntro">
-            <p className="sectionKicker">A little about me</p>
-            <h2>Curious by nature.<br />Practical by choice.</h2>
-            <p>
-              I&apos;m an Information Systems student who enjoys working where
-              software engineering meets intelligent systems. I like breaking
-              complex problems into parts, testing ideas quickly, and building
-              solutions that are clear enough for other people to use.
-            </p>
-          </div>
-
-          <div className="timeline" aria-label="Education and leadership">
-            <article>
-              <span className="timelineYear">2026 — Present</span>
-              <div>
-                <h3>Stony Brook University</h3>
-                <p>Bachelor&apos;s studies in Information Systems</p>
-                <span>Stony Brook, New York</span>
-              </div>
-            </article>
-            <article>
-              <span className="timelineYear">2024 — 2026</span>
-              <div>
-                <h3>Anhui University</h3>
-                <p>Digital Media Technology</p>
-                <span>Co-Lead, Mathematical Modeling Club · Teaching Assistant, Probability Theory</span>
-              </div>
-            </article>
-            <article>
-              <span className="timelineYear">Recognition</span>
-              <div>
-                <h3>Modeling competitions</h3>
-                <p>CUMCM Third Prize · Innovation & Entrepreneurship Excellence Award</p>
-                <span>Lead programmer and algorithm contributor across multidisciplinary teams</span>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="skills shell section" aria-labelledby="skills-title">
-        <div className="sectionHeading compact">
-          <div>
-            <p className="sectionKicker">Toolkit</p>
-            <h2 id="skills-title">What I work with.</h2>
-          </div>
-        </div>
-        <div className="skillGrid">
-          {skills.map((skill, index) => (
-            <article key={skill.title}>
-              <span>0{index + 1}</span>
-              <h3>{skill.title}</h3>
-              <p>{skill.values}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="contact" id="contact">
-        <div className="shell contactInner">
-          <p className="sectionKicker">Let&apos;s build something useful</p>
-          <h2>Have an opportunity<br />or an idea in mind?</h2>
-          <a className="emailLink" href="mailto:liyanbao522@gmail.com">
-            liyanbao522@gmail.com <span aria-hidden="true">↗</span>
+      <header className="siteHeader" id="top">
+        <div className="shell headerInner">
+          <a className="identity" href="#top" aria-label="Yanbao Li homepage">
+            <strong>Yanbao Li</strong>
+            <span>{t.homepage}</span>
           </a>
-          <div className="contactBottom">
-            <p>Currently looking for software engineering and applied AI roles.</p>
-            <div>
-              <a href="https://github.com/Owl-Lee" target="_blank" rel="noreferrer">GitHub ↗</a>
-              <a href="https://www.linkedin.com/in/yanbao-li-772a45377/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-              <a href="/Yanbao-Li-Resume.docx" download>Résumé ↓</a>
-            </div>
+          <nav className="navLinks" aria-label="Primary navigation">
+            <a href="#about">{t.nav[0]}</a>
+            <a href="#education">{t.nav[1]}</a>
+            <a href="#projects">{t.nav[2]}</a>
+            <a href="#awards">{t.nav[3]}</a>
+            <a href="/Yanbao-Li-Resume.docx" download>{t.download}</a>
+          </nav>
+          <div className="languageSwitch" aria-label="Language selection">
+            <button
+              type="button"
+              className={language === "en" ? "active" : ""}
+              onClick={() => setLanguage("en")}
+              aria-pressed={language === "en"}
+            >
+              EN
+            </button>
+            <span>/</span>
+            <button
+              type="button"
+              className={language === "zh" ? "active" : ""}
+              onClick={() => setLanguage("zh")}
+              aria-pressed={language === "zh"}
+            >
+              中
+            </button>
           </div>
+        </div>
+      </header>
+
+      <section className="profileHero shell">
+        <div className="profileCopy">
+          <p className="role">{t.role}</p>
+          <h1>Yanbao Li <span>Yan</span></h1>
+          <p className="intro">{t.intro}</p>
+          <div className="profileMeta">
+            <span>Stony Brook University</span>
+            <span>{t.location}</span>
+          </div>
+          <div className="profileLinks">
+            <a href="https://github.com/Owl-Lee" target="_blank" rel="noreferrer">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/yanbao-li-772a45377/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a href="mailto:liyanbao522@gmail.com">Email ↗</a>
+          </div>
+        </div>
+        <div className="portrait" aria-label="Yanbao Li portrait placeholder">
+          <div className="portraitMark">Yan</div>
+          <p>{t.photoRole}</p>
+          <span>{t.photoNote}</span>
         </div>
       </section>
 
-      <footer className="footer shell">
-        <span>© 2026 Yanbao Li</span>
-        <a href="#top">Back to top ↑</a>
+      <section className="news shell" aria-labelledby="current-status">
+        <h2 id="current-status">{t.statusTitle}</h2>
+        <p><span className="liveDot" />{t.status}</p>
+      </section>
+
+      <div className="pageGrid shell">
+        <div className="mainColumn">
+          <section className="contentSection" id="about">
+            <h2>{t.aboutTitle}</h2>
+            {t.about.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          </section>
+
+          <section className="contentSection" id="education">
+            <h2>{t.educationTitle}</h2>
+            <div className="educationList">
+              {t.education.map((item) => (
+                <article key={item.school}>
+                  <div className="date">{item.date}</div>
+                  <div>
+                    <h3>{item.school}</h3>
+                    <p>{item.degree}</p>
+                    <span>{item.place}</span>
+                    {item.detail && <small>{item.detail}</small>}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="contentSection" id="projects">
+            <div className="sectionTitleRow">
+              <h2>{t.projectsTitle}</h2>
+              <span>{t.projectsIntro}</span>
+            </div>
+            <div className="projectRows">
+              {t.projects.map((project) => (
+                <article key={project.title}>
+                  <div className="projectDate">{project.date}</div>
+                  <div className="projectInfo">
+                    <p className="projectSubtitle">{project.subtitle}</p>
+                    <h3>{project.title}</h3>
+                    <p>{project.body}</p>
+                    <span>{project.tags}</span>
+                  </div>
+                  <div className="repoStatus">{t.repoSoon}</div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="contentSection" id="awards">
+            <h2>{t.awardsTitle}</h2>
+            <div className="awardList">
+              {t.awards.map((award) => (
+                <div key={award.join("-")}>
+                  <span>{award[0]}</span>
+                  <strong>{award[1]}</strong>
+                  <em>{award[2]}</em>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+
+        <aside className="sidebar">
+          <section>
+            <h2>{t.sidebar.profile}</h2>
+            <dl>
+              <dt>University</dt><dd>{t.sidebar.school}</dd>
+              <dt>Major</dt><dd>{t.sidebar.major}</dd>
+              <dt>Location</dt><dd>{t.location}</dd>
+            </dl>
+          </section>
+          <section>
+            <h2>{t.sidebar.interests}</h2>
+            <ul>{t.sidebar.interestsList.map((item) => <li key={item}>{item}</li>)}</ul>
+          </section>
+          <section>
+            <h2>{t.sidebar.tools}</h2>
+            <ul>{t.sidebar.toolsList.map((item) => <li key={item}>{item}</li>)}</ul>
+          </section>
+          <section>
+            <h2>{t.sidebar.contact}</h2>
+            <a className="email" href="mailto:liyanbao522@gmail.com">liyanbao522<br />@gmail.com</a>
+          </section>
+        </aside>
+      </div>
+
+      <footer className="footer">
+        <div className="shell">
+          <p>© 2026 Yanbao Li. {t.footer}</p>
+          <a href="#top">Back to top ↑</a>
+        </div>
       </footer>
     </main>
   );
