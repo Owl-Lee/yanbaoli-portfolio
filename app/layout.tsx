@@ -13,9 +13,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yanbao Li — Software Engineer & Applied AI",
+  metadataBase: new URL("https://yanbao-li-portfolio.liyanbao06.chatgpt.site"),
+  title: "Yanbao Li (Yan) — Personal Homepage",
   description:
-    "Portfolio of Yanbao Li, an Information Systems student at Stony Brook University building software and applied AI systems.",
+    "Personal homepage of Yanbao Li (Yan), an Information Systems student at Stony Brook University interested in software engineering and applied AI.",
+  openGraph: {
+    title: "Yanbao Li — Software Engineering · Applied AI",
+    description: "Personal homepage of Yanbao Li (Yan), Stony Brook University.",
+    type: "website",
+    images: [{ url: "/og.png", width: 1536, height: 1024, alt: "Yanbao Li personal homepage" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Yanbao Li — Software Engineering · Applied AI",
+    description: "Personal homepage of Yanbao Li (Yan), Stony Brook University.",
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({
