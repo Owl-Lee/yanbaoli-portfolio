@@ -120,9 +120,29 @@ a:focus-visible, button:focus-visible {
 .intro { max-width: 740px; margin: 24px 0 0; color: var(--muted); font-size: 1.12rem; line-height: 1.78; }
 .profileMeta { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 24px; color: #424b58; font-size: 0.91rem; }
 .profileMeta span::before { content: "— "; color: var(--accent); }
+.profileMeta .metaSchool::before { content: none; }
+.metaSchool {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 8px;
+  background: white;
+  border: 1px solid var(--line);
+}
+.metaSchool img { display: block; width: 158px; height: auto; }
 .profileLinks { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 30px; }
-.profileLinks a { border-bottom: 1px solid #858c96; padding-bottom: 2px; font-size: 0.9rem; font-weight: 650; }
+.profileLinks a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  border-bottom: 1px solid #858c96;
+  padding-bottom: 3px;
+  font-size: 0.9rem;
+  font-weight: 650;
+}
 .profileLinks a:hover { color: var(--accent); border-color: var(--accent); }
+.socialIcon { width: 21px; height: 21px; object-fit: contain; }
+.linkedinIcon { filter: invert(31%) sepia(75%) saturate(1743%) hue-rotate(174deg) brightness(84%) contrast(101%); }
 .portrait {
   position: relative;
   height: 246px;
@@ -170,6 +190,23 @@ a:focus-visible, button:focus-visible {
 
 .educationList article { display: grid; grid-template-columns: 145px 1fr; gap: 28px; padding: 24px 0; border-bottom: 1px solid var(--line); }
 .educationList article:first-child { padding-top: 0; }
+.educationBody {
+  display: grid;
+  grid-template-columns: 124px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+.schoolLogoFrame {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background: white;
+  border: 1px solid var(--line);
+}
+.schoolLogoFrame img { display: block; max-width: 100%; max-height: 46px; object-fit: contain; }
+.schoolLogoFrame.sbuLogo img { max-height: 34px; }
 .date, .projectDate { color: var(--accent); font-family: var(--font-geist-mono), monospace; font-size: 0.77rem; letter-spacing: 0.025em; }
 .educationList h3 { margin: 0 0 6px; font-family: var(--serif); font-size: 1.18rem; }
 .educationList p { margin: 0 0 6px; color: #3f4855; font-size: 0.97rem; }
@@ -238,6 +275,8 @@ a:focus-visible, button:focus-visible {
 @media (max-width: 430px) {
   .identity strong { font-size: 1rem; }
   .profileCopy h1 { font-size: 3.1rem; }
+  .educationBody { grid-template-columns: 1fr; }
+  .schoolLogoFrame { width: 142px; }
   .sidebar { grid-template-columns: 1fr; }
   .projectRows article { grid-template-columns: 1fr; gap: 10px; }
   .footer .shell { flex-direction: column; }
