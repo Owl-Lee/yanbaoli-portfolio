@@ -73,7 +73,7 @@ const content = {
       ["2025", "CUMCM Mathematical Modeling Competition", "Third Prize"],
       ["2025", "Innovation & Entrepreneurship Competition", "Excellence Award"],
       ["2024—26", "Mathematical Modeling Club, Anhui University", "Co-Lead"],
-      ["Anhui", "Probability Theory", "Teaching Assistant"],
+      ["2025", "Probability Theory", "Teaching Assistant"],
     ],
     sidebar: {
       profile: "Profile",
@@ -154,7 +154,7 @@ const content = {
       ["2025", "全国大学生数学建模竞赛", "三等奖"],
       ["2025", "创新创业竞赛", "优秀奖"],
       ["2024—26", "安徽大学数学建模社团", "联合负责人"],
-      ["安徽大学", "概率论课程", "助教"],
+      ["2025", "概率论课程", "助教"],
     ],
     sidebar: {
       profile: "基本信息",
