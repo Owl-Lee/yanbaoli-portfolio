@@ -4,6 +4,11 @@ import { useState } from "react";
 
 type Language = "en" | "zh";
 
+const schoolLogos = [
+  { src: "/brands/sbu-logo.jpg", alt: "Stony Brook University logo", className: "sbuLogo" },
+  { src: "/brands/ahu-logo.png", alt: "Anhui University logo", className: "ahuLogo" },
+];
+
 const content = {
   en: {
     homepage: "Personal Homepage",
@@ -214,13 +219,24 @@ export default function Home() {
           <h1>Yanbao Li <span>Yan</span></h1>
           <p className="intro">{t.intro}</p>
           <div className="profileMeta">
-            <span>Stony Brook University</span>
+            <span className="metaSchool">
+              <img src="/brands/sbu-logo.jpg" alt="Stony Brook University" />
+            </span>
             <span>{t.location}</span>
           </div>
           <div className="profileLinks">
-            <a href="https://github.com/Owl-Lee" target="_blank" rel="noreferrer">GitHub ↗</a>
-            <a href="https://www.linkedin.com/in/yanbao-li-772a45377/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-            <a href="mailto:liyanbao522@gmail.com">Email ↗</a>
+            <a href="mailto:liyanbao522@gmail.com">
+              <img className="socialIcon" src="/brands/outlook.svg" alt="" aria-hidden="true" />
+              <span>Outlook</span>
+            </a>
+            <a href="https://github.com/Owl-Lee" target="_blank" rel="noreferrer">
+              <img className="socialIcon" src="/brands/github.svg" alt="" aria-hidden="true" />
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/yanbao-li-772a45377/" target="_blank" rel="noreferrer">
+              <img className="socialIcon linkedinIcon" src="/brands/linkedin.svg" alt="" aria-hidden="true" />
+              <span>LinkedIn</span>
+            </a>
           </div>
         </div>
         <div className="portrait" aria-label="Yanbao Li portrait placeholder">
@@ -245,14 +261,19 @@ export default function Home() {
           <section className="contentSection" id="education">
             <h2>{t.educationTitle}</h2>
             <div className="educationList">
-              {t.education.map((item) => (
+              {t.education.map((item, index) => (
                 <article key={item.school}>
                   <div className="date">{item.date}</div>
-                  <div>
-                    <h3>{item.school}</h3>
-                    <p>{item.degree}</p>
-                    <span>{item.place}</span>
-                    {item.detail && <small>{item.detail}</small>}
+                  <div className="educationBody">
+                    <div className={`schoolLogoFrame ${schoolLogos[index].className}`}>
+                      <img src={schoolLogos[index].src} alt={schoolLogos[index].alt} />
+                    </div>
+                    <div>
+                      <h3>{item.school}</h3>
+                      <p>{item.degree}</p>
+                      <span>{item.place}</span>
+                      {item.detail && <small>{item.detail}</small>}
+                    </div>
                   </div>
                 </article>
               ))}
