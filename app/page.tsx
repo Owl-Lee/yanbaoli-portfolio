@@ -13,7 +13,8 @@ const content = {
   en: {
     homepage: "Personal Homepage",
     nav: ["About", "Education", "Projects", "Awards"],
-    role: "Software Engineer · Applied AI Developer",
+    greeting: "Hi, I’m Yan.",
+    role: "Information Systems student · Software & Applied AI",
     intro:
       "Information Systems student at Stony Brook University. I enjoy building reliable software systems and turning machine learning ideas into practical applications.",
     location: "Stony Brook, New York",
@@ -93,7 +94,8 @@ const content = {
   zh: {
     homepage: "个人主页",
     nav: ["关于我", "教育经历", "项目", "奖项"],
-    role: "软件工程师 · AI 应用开发",
+    greeting: "你好，我是 Yan。",
+    role: "Information Systems 学生 · 软件与 AI 应用开发",
     intro:
       "石溪大学 Information Systems 专业学生。我喜欢构建可靠的软件系统，也希望把机器学习想法做成真正有用的应用。",
     location: "美国纽约州石溪",
@@ -215,8 +217,9 @@ export default function Home() {
 
       <section className="profileHero shell">
         <div className="profileCopy">
-          <p className="role">{t.role}</p>
+          <p className="greeting">{t.greeting}</p>
           <h1>Yanbao Li <span>Yan</span></h1>
+          <p className="role">{t.role}</p>
           <p className="intro">{t.intro}</p>
           <div className="profileMeta">
             <span className="metaSchool">
@@ -239,10 +242,12 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div className="portrait" aria-label="Yanbao Li portrait placeholder">
-          <div className="portraitMark">Yan</div>
-          <p>{t.photoRole}</p>
-          <span>{t.photoNote}</span>
+        <div className="portrait">
+          <img src="/yanbao-li-photo.png" alt="Yanbao Li" />
+          <div className="portraitCaption">
+            <strong>Yanbao Li</strong>
+            <span>{t.photoRole}</span>
+          </div>
         </div>
       </section>
 
