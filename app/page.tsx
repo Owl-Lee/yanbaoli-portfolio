@@ -228,7 +228,7 @@ export default function Home() {
             <span>{t.location}</span>
           </div>
           <div className="profileLinks">
-            <a href="mailto:liyanbao522@gmail.com">
+            <a href="mailto:liyanbao06@outlook.com">
               <img className="socialIcon" src="/brands/outlook.svg" alt="" aria-hidden="true" />
               <span>Outlook</span>
             </a>
@@ -339,7 +339,7 @@ export default function Home() {
           </section>
           <section>
             <h2>{t.sidebar.contact}</h2>
-            <a className="email" href="mailto:liyanbao522@gmail.com">liyanbao522<br />@gmail.com</a>
+            <a className="email" href="mailto:liyanbao06@outlook.com">liyanbao06<br />@outlook.com</a>
           </section>
         </aside>
       </div>
