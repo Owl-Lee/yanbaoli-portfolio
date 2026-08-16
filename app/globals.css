@@ -83,16 +83,23 @@ a:focus-visible, button:focus-visible {
 
 .profileHero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 220px;
-  gap: 70px;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  gap: 56px;
+  align-items: start;
   padding-block: 72px 62px;
 }
-.role {
-  margin: 0 0 12px;
+.greeting {
+  margin: 0 0 13px;
   color: var(--accent);
+  font-family: var(--serif);
+  font-size: 1.32rem;
+  font-weight: 600;
+}
+.role {
+  margin: 18px 0 0;
+  color: var(--muted);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.81rem;
+  font-size: 0.78rem;
   font-weight: 650;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -118,17 +125,17 @@ a:focus-visible, button:focus-visible {
   vertical-align: middle;
 }
 .intro { max-width: 740px; margin: 24px 0 0; color: var(--muted); font-size: 1.12rem; line-height: 1.78; }
-.profileMeta { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 24px; color: #424b58; font-size: 0.91rem; }
+.profileMeta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; margin-top: 24px; color: #424b58; font-size: 0.91rem; }
 .profileMeta span::before { content: "— "; color: var(--accent); }
 .profileMeta .metaSchool::before { content: none; }
 .metaSchool {
   display: inline-flex;
   align-items: center;
-  padding: 5px 8px;
-  background: white;
-  border: 1px solid var(--line);
+  height: 31px;
+  padding: 0;
 }
-.metaSchool img { display: block; width: 158px; height: auto; }
+.metaSchool img { display: block; width: 174px; height: 31px; object-fit: contain; }
+.profileMeta > span:not(.metaSchool) { display: inline-flex; align-items: center; min-height: 31px; }
 .profileLinks { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 30px; }
 .profileLinks a {
   display: inline-flex;
@@ -145,30 +152,28 @@ a:focus-visible, button:focus-visible {
 .linkedinIcon { filter: invert(31%) sepia(75%) saturate(1743%) hue-rotate(174deg) brightness(84%) contrast(101%); }
 .portrait {
   position: relative;
-  height: 246px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 22px;
-  background: var(--navy);
+  height: 320px;
+  background: #d7d9dd;
   color: white;
-  border: 10px solid white;
+  border: 8px solid white;
   box-shadow: 0 10px 30px rgba(22, 31, 45, 0.12);
   overflow: hidden;
 }
-.portrait::before {
-  content: "";
+.portrait > img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 18%; }
+.portraitCaption {
   position: absolute;
-  width: 150px;
-  height: 150px;
-  top: -46px;
-  right: -38px;
-  border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 50%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+  padding: 12px 14px;
+  background: linear-gradient(90deg, rgba(20, 30, 48, 0.92), rgba(20, 30, 48, 0.68));
 }
-.portraitMark { position: absolute; top: 46px; left: 22px; font-family: var(--serif); font-size: 4.7rem; letter-spacing: -0.08em; }
-.portrait p { margin: 0 0 5px; font-family: var(--serif); font-size: 1rem; }
-.portrait span { color: #c4cad4; font-size: 0.73rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.portraitCaption strong { font-family: var(--serif); font-size: 0.98rem; }
+.portraitCaption span { color: #e2e7ef; font-size: 0.65rem; letter-spacing: 0.045em; text-transform: uppercase; text-align: right; }
 
 .news { display: grid; grid-template-columns: 160px 1fr; border: 1px solid #e0d1d4; background: var(--accent-soft); }
 .news h2 { margin: 0; padding: 25px; border-right: 1px solid #e0d1d4; color: var(--accent); font-family: var(--serif); font-size: 1.05rem; }
@@ -192,21 +197,21 @@ a:focus-visible, button:focus-visible {
 .educationList article:first-child { padding-top: 0; }
 .educationBody {
   display: grid;
-  grid-template-columns: 124px minmax(0, 1fr);
+  grid-template-columns: 166px minmax(0, 1fr);
   gap: 22px;
   align-items: start;
 }
 .schoolLogoFrame {
-  min-height: 58px;
+  min-height: 76px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
+  padding: 10px;
   background: white;
   border: 1px solid var(--line);
 }
-.schoolLogoFrame img { display: block; max-width: 100%; max-height: 46px; object-fit: contain; }
-.schoolLogoFrame.sbuLogo img { max-height: 34px; }
+.schoolLogoFrame img { display: block; max-width: 100%; max-height: 55px; object-fit: contain; }
+.schoolLogoFrame.sbuLogo img { width: 154px; max-width: none; max-height: none; }
 .date, .projectDate { color: var(--accent); font-family: var(--font-geist-mono), monospace; font-size: 0.77rem; letter-spacing: 0.025em; }
 .educationList h3 { margin: 0 0 6px; font-family: var(--serif); font-size: 1.18rem; }
 .educationList p { margin: 0 0 6px; color: #3f4855; font-size: 0.97rem; }
@@ -247,8 +252,8 @@ a:focus-visible, button:focus-visible {
 @media (max-width: 900px) {
   .headerInner { grid-template-columns: 1fr auto; }
   .navLinks { display: none; }
-  .profileHero { grid-template-columns: 1fr 190px; gap: 38px; }
-  .portrait { height: 220px; }
+  .profileHero { grid-template-columns: 1fr 210px; gap: 38px; }
+  .portrait { height: 272px; }
   .pageGrid { grid-template-columns: minmax(0, 1fr) 210px; gap: 45px; }
 }
 
@@ -259,7 +264,7 @@ a:focus-visible, button:focus-visible {
   .identity span { display: none; }
   .profileHero { grid-template-columns: 1fr; padding-block: 55px 40px; }
   .profileCopy h1 span { display: block; width: fit-content; margin: 12px 0 0; }
-  .portrait { width: min(100%, 230px); height: 230px; }
+  .portrait { width: min(100%, 230px); height: 292px; }
   .news { grid-template-columns: 1fr; }
   .news h2 { padding: 18px 20px 0; border-right: 0; }
   .news p { padding: 15px 20px 20px; }
