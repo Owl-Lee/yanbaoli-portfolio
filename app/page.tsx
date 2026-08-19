@@ -55,6 +55,15 @@ const content = {
         url: "https://github.com/Owl-Lee/VideoHarvester",
       },
       {
+        date: "2025",
+        title: "MCM/ICM · Problem F",
+        subtitle: "Cybercrime policy modeling paper",
+        body: "Co-authored a 23-page mathematical modeling paper that combines hierarchical clustering, game-theoretic analysis, and random forest regression to study cybercrime patterns, policy effectiveness, and cybersecurity determinants.",
+        tags: "Python · Random Forest · Hierarchical Clustering · Data Visualization",
+        url: "/mcm-icm-2025-problem-f-public.pdf",
+        linkLabel: "Read paper ↗",
+      },
+      {
         date: "2026",
         title: "AdMind",
         subtitle: "Full-stack ad placement system",
@@ -143,6 +152,15 @@ const content = {
         body: "构建 Windows 桌面应用，将已获授权的视频链接转化为清晰的下载流程，支持合集处理、进度追踪、重复保护和任务恢复。",
         tags: "C# · Windows Forms · yt-dlp · FFmpeg",
         url: "https://github.com/Owl-Lee/VideoHarvester",
+      },
+      {
+        date: "2025",
+        title: "MCM/ICM · Problem F",
+        subtitle: "网络犯罪政策建模论文",
+        body: "参与完成 23 页数学建模论文，结合层次聚类、博弈论分析与随机森林回归，研究网络犯罪模式、政策有效性与网络安全影响因素。",
+        tags: "Python · Random Forest · Hierarchical Clustering · Data Visualization",
+        url: "/mcm-icm-2025-problem-f-public.pdf",
+        linkLabel: "阅读论文 ↗",
       },
       {
         date: "2026",
@@ -320,7 +338,7 @@ export default function Home() {
                   </div>
                   {project.url ? (
                     <a className="repoStatus repoLink" href={project.url} target="_blank" rel="noreferrer">
-                      {t.repoSource}
+                      {project.linkLabel ?? t.repoSource}
                     </a>
                   ) : (
                     <div className="repoStatus">{t.repoSoon}</div>
