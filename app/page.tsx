@@ -44,8 +44,16 @@ const content = {
       },
     ],
     projectsTitle: "Selected Projects",
-    projectsIntro: "Project pages and source repositories are being prepared.",
+    projectsIntro: "Selected work and source repositories.",
     projects: [
+      {
+        date: "2026",
+        title: "VideoHarvester",
+        subtitle: "Local-first Windows video workflow",
+        body: "Built a Windows desktop app that turns authorized video-page links into a clear download workflow with playlist handling, progress tracking, duplicate protection, and task recovery.",
+        tags: "C# · Windows Forms · yt-dlp · FFmpeg",
+        url: "https://github.com/Owl-Lee/VideoHarvester",
+      },
       {
         date: "2026",
         title: "AdMind",
@@ -88,6 +96,7 @@ const content = {
     footer: "Designed and built by Yanbao Li.",
     download: "CV / Résumé",
     repoSoon: "Repository soon",
+    repoSource: "View source ↗",
     photoRole: "Software & AI",
     photoNote: "Photo can be added later",
   },
@@ -125,8 +134,16 @@ const content = {
       },
     ],
     projectsTitle: "主要项目",
-    projectsIntro: "项目页面与代码仓库正在整理中。",
+    projectsIntro: "精选项目与代码仓库。",
     projects: [
+      {
+        date: "2026",
+        title: "VideoHarvester",
+        subtitle: "本地优先的 Windows 视频工作流工具",
+        body: "构建 Windows 桌面应用，将已获授权的视频链接转化为清晰的下载流程，支持合集处理、进度追踪、重复保护和任务恢复。",
+        tags: "C# · Windows Forms · yt-dlp · FFmpeg",
+        url: "https://github.com/Owl-Lee/VideoHarvester",
+      },
       {
         date: "2026",
         title: "AdMind",
@@ -169,6 +186,7 @@ const content = {
     footer: "由 Yanbao Li 设计与开发。",
     download: "下载简历",
     repoSoon: "代码即将公开",
+    repoSource: "查看源码 ↗",
     photoRole: "软件工程与 AI",
     photoNote: "之后可添加个人照片",
   },
@@ -300,7 +318,13 @@ export default function Home() {
                     <p>{project.body}</p>
                     <span>{project.tags}</span>
                   </div>
-                  <div className="repoStatus">{t.repoSoon}</div>
+                  {project.url ? (
+                    <a className="repoStatus repoLink" href={project.url} target="_blank" rel="noreferrer">
+                      {t.repoSource}
+                    </a>
+                  ) : (
+                    <div className="repoStatus">{t.repoSoon}</div>
+                  )}
                 </article>
               ))}
             </div>

@@ -226,7 +226,9 @@ a:focus-visible, button:focus-visible {
 .projectInfo h3 { margin: 0 0 10px; font-family: var(--serif); font-size: 1.22rem; }
 .projectInfo > p { margin: 0; color: #454f5d; font-size: 0.96rem; line-height: 1.76; }
 .projectInfo > span { display: block; margin-top: 14px; color: var(--faint); font-family: var(--font-geist-mono), monospace; font-size: 0.74rem; line-height: 1.55; }
-.repoStatus { align-self: start; color: #68717c; font-size: 0.72rem; line-height: 1.45; text-align: right; text-transform: uppercase; }
+  .repoStatus { align-self: start; color: #68717c; font-size: 0.72rem; line-height: 1.45; text-align: right; text-transform: uppercase; }
+  .repoLink { color: var(--navy); font-weight: 700; text-decoration: none; }
+  .repoLink:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
 
 .awardList { border-top: 1px solid var(--line); }
 .awardList > div { display: grid; grid-template-columns: 85px minmax(0, 1fr) 120px; gap: 20px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); }
