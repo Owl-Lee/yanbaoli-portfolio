@@ -48,6 +48,7 @@ const content = {
     projects: [
       {
         date: "2026",
+        order: 20260816,
         title: "VideoHarvester",
         subtitle: "Local-first Windows video workflow",
         body: "Built a Windows desktop app that turns authorized video-page links into a clear download workflow with playlist handling, progress tracking, duplicate protection, and task recovery.",
@@ -56,6 +57,7 @@ const content = {
       },
       {
         date: "2025",
+        order: 20250201,
         title: "MCM/ICM · Problem F",
         subtitle: "Cybercrime policy modeling paper",
         body: "Co-authored a 23-page mathematical modeling paper that combines hierarchical clustering, game-theoretic analysis, and random forest regression to study cybercrime patterns, policy effectiveness, and cybersecurity determinants.",
@@ -65,6 +67,7 @@ const content = {
       },
       {
         date: "2025",
+        order: 20250907,
         title: "CUMCM · Drone Optimization",
         subtitle: "Multi-agent optimization modeling paper",
         body: "Co-authored a 25-page mathematical modeling paper on coordinated drone deployment. Built a unified geometric model and used simulated annealing, Bayesian optimization, genetic algorithms, island models, and NSGA-II to optimize multi-objective strategies.",
@@ -74,6 +77,7 @@ const content = {
       },
       {
         date: "2026",
+        order: 20260815,
         title: "AdMind",
         subtitle: "Explainable video-ad decision prototype",
         body: "Built a policy-first decision layer for long-form video advertising, combining time-coded video evidence, player-state signals, local paused-frame vision, and deterministic ethical rules.",
@@ -82,6 +86,7 @@ const content = {
       },
       {
         date: "2026",
+        order: 20260814,
         title: "Sona",
         subtitle: "Local-first private music player",
         body: "Built a cross-platform music and MV player for Windows and Android, with local import, SHA-256 duplicate detection, SQLite library management, playlists, offline-first playback, and cloud-sync foundations.",
@@ -90,6 +95,7 @@ const content = {
       },
       {
         date: "2024—25",
+        order: 20250831,
         title: "Multimodal Medical Image Fusion",
         subtitle: "Deep learning research project",
         body: "Led algorithm and model architecture design for a PyTorch-based multimodal image fusion system, while coordinating research and experiments across a four-person team.",
@@ -160,6 +166,7 @@ const content = {
     projects: [
       {
         date: "2026",
+        order: 20260816,
         title: "VideoHarvester",
         subtitle: "本地优先的 Windows 视频工作流工具",
         body: "构建 Windows 桌面应用，将已获授权的视频链接转化为清晰的下载流程，支持合集处理、进度追踪、重复保护和任务恢复。",
@@ -168,6 +175,7 @@ const content = {
       },
       {
         date: "2025",
+        order: 20250201,
         title: "MCM/ICM · Problem F",
         subtitle: "网络犯罪政策建模论文",
         body: "参与完成 23 页数学建模论文，结合层次聚类、博弈论分析与随机森林回归，研究网络犯罪模式、政策有效性与网络安全影响因素。",
@@ -177,6 +185,7 @@ const content = {
       },
       {
         date: "2025",
+        order: 20250907,
         title: "国赛 · 无人机协同优化",
         subtitle: "多主体优化建模论文",
         body: "参与完成 25 页数学建模论文，围绕无人机协同投放问题建立统一几何模型，并使用模拟退火、贝叶斯优化、遗传算法、多岛模型与 NSGA-II 求解多目标优化策略。",
@@ -186,6 +195,7 @@ const content = {
       },
       {
         date: "2026",
+        order: 20260815,
         title: "AdMind",
         subtitle: "可解释的视频广告决策原型",
         body: "构建面向长视频的策略优先决策层，融合带时间戳的视频证据、播放器状态、本地暂停帧视觉分析，以及确定性的伦理保护规则。",
@@ -194,6 +204,7 @@ const content = {
       },
       {
         date: "2026",
+        order: 20260814,
         title: "Sona",
         subtitle: "本地优先的私人音乐播放器",
         body: "构建面向 Windows 与 Android 的音乐和 MV 播放器，支持本地导入、SHA-256 去重、SQLite 曲库与歌单、离线优先播放，以及云同步基础设施。",
@@ -202,6 +213,7 @@ const content = {
       },
       {
         date: "2024—25",
+        order: 20250831,
         title: "多模态医学图像融合",
         subtitle: "深度学习研究项目",
         body: "负责基于 PyTorch 的多模态图像融合算法与模型架构设计，并协调四人团队完成研究写作与实验设计。",
@@ -353,7 +365,7 @@ export default function Home() {
               <span>{t.projectsIntro}</span>
             </div>
             <div className="projectRows">
-              {t.projects.map((project) => (
+              {[...t.projects].sort((a, b) => b.order - a.order).map((project) => (
                 <article key={project.title}>
                   <div className="projectDate">{project.date}</div>
                   <div className="projectInfo">
