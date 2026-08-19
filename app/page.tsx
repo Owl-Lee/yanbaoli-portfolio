@@ -38,7 +38,7 @@ const content = {
       {
         date: "Aug 2024 — Jun 2026",
         school: "Anhui University",
-        degree: "Digital Media Technology",
+        degree: "Bachelor’s studies in Digital Media Technology",
         place: "Hefei, China",
         detail: "Co-Lead, Mathematical Modeling Club · Teaching Assistant, Probability Theory",
       },
@@ -100,6 +100,7 @@ const content = {
     awardsTitle: "Awards & Leadership",
     awards: [
       ["2025", "CUMCM Mathematical Modeling Competition", "Third Prize"],
+      ["2025", "ICM Mathematical Contest in Modeling", "Successful Participant"],
       ["2025", "Innovation & Entrepreneurship Competition", "Excellence Award"],
       ["2024—26", "Mathematical Modeling Club, Anhui University", "Co-Lead"],
       ["2025", "Probability Theory", "Teaching Assistant"],
@@ -149,7 +150,7 @@ const content = {
       {
         date: "2024 年 8 月 — 2026 年 6 月",
         school: "安徽大学",
-        degree: "数字媒体技术",
+        degree: "数字媒体技术 本科学习",
         place: "中国合肥",
         detail: "数学建模社团联合负责人 · 概率论助教",
       },
@@ -211,6 +212,7 @@ const content = {
     awardsTitle: "奖项与经历",
     awards: [
       ["2025", "全国大学生数学建模竞赛", "三等奖"],
+      ["2025", "美国大学生数学建模竞赛（ICM）", "Successful Participant"],
       ["2025", "创新创业竞赛", "优秀奖"],
       ["2024—26", "安徽大学数学建模社团", "联合负责人"],
       ["2025", "概率论课程", "助教"],
