@@ -64,11 +64,29 @@ const content = {
         linkLabel: "Read paper ↗",
       },
       {
+        date: "2025",
+        title: "CUMCM · Drone Optimization",
+        subtitle: "Multi-agent optimization modeling paper",
+        body: "Co-authored a 25-page mathematical modeling paper on coordinated drone deployment. Built a unified geometric model and used simulated annealing, Bayesian optimization, genetic algorithms, island models, and NSGA-II to optimize multi-objective strategies.",
+        tags: "Python · Bayesian Optimization · Genetic Algorithms · NSGA-II",
+        url: "/cumcm-2025-drone-optimization-paper.pdf",
+        linkLabel: "Read paper ↗",
+      },
+      {
         date: "2026",
         title: "AdMind",
-        subtitle: "Full-stack ad placement system",
-        body: "Built the backend with Spring Boot, Spring Data JPA, and MySQL. Integrated the Claude API to score ad placements and support intensity-based tiering.",
-        tags: "Java · Spring Boot · MySQL · Claude API",
+        subtitle: "Explainable video-ad decision prototype",
+        body: "Built a policy-first decision layer for long-form video advertising, combining time-coded video evidence, player-state signals, local paused-frame vision, and deterministic ethical rules.",
+        tags: "TypeScript · TwelveLabs · MediaPipe · Fastify",
+        status: "Private GitHub repository",
+      },
+      {
+        date: "2026",
+        title: "Sona",
+        subtitle: "Local-first private music player",
+        body: "Built a cross-platform music and MV player for Windows and Android, with local import, SHA-256 duplicate detection, SQLite library management, playlists, offline-first playback, and cloud-sync foundations.",
+        tags: "Flutter · Dart · SQLite · Supabase",
+        status: "Private GitHub repository",
       },
       {
         date: "2024—25",
@@ -163,11 +181,29 @@ const content = {
         linkLabel: "阅读论文 ↗",
       },
       {
+        date: "2025",
+        title: "国赛 · 无人机协同优化",
+        subtitle: "多主体优化建模论文",
+        body: "参与完成 25 页数学建模论文，围绕无人机协同投放问题建立统一几何模型，并使用模拟退火、贝叶斯优化、遗传算法、多岛模型与 NSGA-II 求解多目标优化策略。",
+        tags: "Python · 贝叶斯优化 · 遗传算法 · NSGA-II",
+        url: "/cumcm-2025-drone-optimization-paper.pdf",
+        linkLabel: "阅读论文 ↗",
+      },
+      {
         date: "2026",
         title: "AdMind",
-        subtitle: "全栈广告投放系统",
-        body: "使用 Spring Boot、Spring Data JPA 和 MySQL 完成后端开发，并接入 Claude API 对广告位进行评分，实现基于投放强度的分级匹配。",
-        tags: "Java · Spring Boot · MySQL · Claude API",
+        subtitle: "可解释的视频广告决策原型",
+        body: "构建面向长视频的策略优先决策层，融合带时间戳的视频证据、播放器状态、本地暂停帧视觉分析，以及确定性的伦理保护规则。",
+        tags: "TypeScript · TwelveLabs · MediaPipe · Fastify",
+        status: "私有 GitHub 仓库",
+      },
+      {
+        date: "2026",
+        title: "Sona",
+        subtitle: "本地优先的私人音乐播放器",
+        body: "构建面向 Windows 与 Android 的音乐和 MV 播放器，支持本地导入、SHA-256 去重、SQLite 曲库与歌单、离线优先播放，以及云同步基础设施。",
+        tags: "Flutter · Dart · SQLite · Supabase",
+        status: "私有 GitHub 仓库",
       },
       {
         date: "2024—25",
@@ -341,7 +377,7 @@ export default function Home() {
                       {project.linkLabel ?? t.repoSource}
                     </a>
                   ) : (
-                    <div className="repoStatus">{t.repoSoon}</div>
+                    <div className="repoStatus">{"status" in project ? project.status : t.repoSoon}</div>
                   )}
                 </article>
               ))}
