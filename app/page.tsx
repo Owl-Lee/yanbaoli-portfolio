@@ -82,7 +82,7 @@ const content = {
         subtitle: "Explainable video-ad decision prototype",
         body: "Built a policy-first decision layer for long-form video advertising, combining time-coded video evidence, player-state signals, local paused-frame vision, and deterministic ethical rules.",
         tags: "TypeScript · TwelveLabs · MediaPipe · Fastify",
-        status: "Private GitHub repository",
+        url: "https://github.com/Owl-Lee/AdMind",
       },
       {
         date: "2026",
@@ -200,7 +200,7 @@ const content = {
         subtitle: "可解释的视频广告决策原型",
         body: "构建面向长视频的策略优先决策层，融合带时间戳的视频证据、播放器状态、本地暂停帧视觉分析，以及确定性的伦理保护规则。",
         tags: "TypeScript · TwelveLabs · MediaPipe · Fastify",
-        status: "私有 GitHub 仓库",
+        url: "https://github.com/Owl-Lee/AdMind",
       },
       {
         date: "2026",
