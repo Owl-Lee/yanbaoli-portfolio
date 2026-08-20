@@ -300,7 +300,7 @@ export default function Home() {
             <a href="#education">{t.nav[1]}</a>
             <a href="#projects">{t.nav[2]}</a>
             <a href="#awards">{t.nav[3]}</a>
-            <a href="/Yanbao-Li-Resume.docx" download>{t.download}</a>
+            <a href="/Yanbao-Li-Resume.pdf" download>{t.download}</a>
           </nav>
           <div className="languageSwitch" aria-label={t.languageLabel}>
             <button
