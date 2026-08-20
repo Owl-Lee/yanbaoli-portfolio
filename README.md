@@ -1,5 +1,7 @@
 # Yanbao Li — Personal Portfolio
 
+**English** · [简体中文](#简体中文) · [Live site](https://yanbaoli.me)
+
 Source code for [yanbaoli.me](https://yanbaoli.me), the personal portfolio of
 Yanbao Li (Yan), an Information Systems student at Stony Brook University
 interested in software engineering and applied AI.
@@ -40,15 +42,18 @@ pnpm build
 
 ---
 
-## 中文说明
+## 简体中文
 
-这是 [yanbaoli.me](https://yanbaoli.me) 的源码：Yanbao Li（Yan）的个人作品集网站。目前就读于石溪大学 Information Systems 专业，关注软件工程与应用型 AI。
+**[English](#yanbao-li--personal-portfolio)** · 简体中文 · [访问网站](https://yanbaoli.me)
 
-### 网站内容
+这是 [yanbaoli.me](https://yanbaoli.me) 的源代码仓库。该网站是 Yanbao Li（Yan）的中英文个人作品集；Yan 目前就读于石溪大学 Information Systems 专业，关注软件工程与应用型 AI。
 
-- 英文优先，并提供完整的中文界面切换
-- 响应式页面，展示教育经历、奖项、技能和项目
-- 提供 GitHub、LinkedIn、简历和邮箱入口
+### 网站亮点
+
+- 英文优先，并提供完整中文内容
+- 响应式作品集布局，覆盖教育经历、项目、奖项与技能
+- 提供 GitHub、LinkedIn、简历和电子邮箱入口
+- 在桌面、平板和手机尺寸下保持可读与可操作
 
 ### 技术栈
 
@@ -59,15 +64,19 @@ pnpm build
 
 ### 本地运行
 
-需要 Node.js 22.13 或更高版本以及 pnpm。
+需要 Node.js 22.13 或更高版本，以及 pnpm。
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-构建生产版本：
+生产构建：
 
 ```bash
 pnpm build
 ```
+
+### 在线网站
+
+[yanbaoli.me](https://yanbaoli.me)

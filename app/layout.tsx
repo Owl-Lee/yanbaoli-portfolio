@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://yanbao-li-portfolio.liyanbao06.chatgpt.site"),
+  metadataBase: new URL("https://yanbaoli.me"),
   title: "Yanbao Li (Yan) — Personal Homepage",
   description:
     "Personal homepage of Yanbao Li (Yan), an Information Systems student at Stony Brook University interested in software engineering and applied AI.",

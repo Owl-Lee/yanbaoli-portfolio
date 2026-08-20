@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Language = "en" | "zh";
 
@@ -130,6 +130,10 @@ const content = {
       contact: "Contact",
     },
     footer: "Designed and built by Yanbao Li.",
+    navigationLabel: "Primary navigation",
+    languageLabel: "Language selection",
+    profileLabels: ["University", "Major", "Location"],
+    backToTop: "Back to top ↑",
     download: "CV / Résumé",
     repoSoon: "Repository soon",
     repoSource: "View source ↗",
@@ -256,6 +260,10 @@ const content = {
       contact: "联系方式",
     },
     footer: "由 Yanbao Li 设计与开发。",
+    navigationLabel: "主导航",
+    languageLabel: "语言选择",
+    profileLabels: ["学校", "专业", "所在地"],
+    backToTop: "回到顶部 ↑",
     download: "下载简历",
     repoSoon: "代码即将公开",
     repoSource: "查看源码 ↗",
@@ -268,22 +276,33 @@ export default function Home() {
   const [language, setLanguage] = useState<Language>("en");
   const t = content[language];
 
+  useEffect(() => {
+    document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
+    document.title = language === "zh"
+      ? "李彦宝（Yan）— 个人主页"
+      : "Yanbao Li (Yan) — Personal Homepage";
+  }, [language]);
+
   return (
     <main>
       <header className="siteHeader" id="top">
         <div className="shell headerInner">
-          <a className="identity" href="#top" aria-label="Yanbao Li homepage">
+          <a
+            className="identity"
+            href="#top"
+            aria-label={language === "zh" ? "李彦宝个人主页" : "Yanbao Li homepage"}
+          >
             <strong>Yanbao Li</strong>
             <span>{t.homepage}</span>
           </a>
-          <nav className="navLinks" aria-label="Primary navigation">
+          <nav className="navLinks" aria-label={t.navigationLabel}>
             <a href="#about">{t.nav[0]}</a>
             <a href="#education">{t.nav[1]}</a>
             <a href="#projects">{t.nav[2]}</a>
             <a href="#awards">{t.nav[3]}</a>
             <a href="/Yanbao-Li-Resume.docx" download>{t.download}</a>
           </nav>
-          <div className="languageSwitch" aria-label="Language selection">
+          <div className="languageSwitch" aria-label={t.languageLabel}>
             <button
               type="button"
               className={language === "en" ? "active" : ""}
@@ -420,9 +439,9 @@ export default function Home() {
           <section>
             <h2>{t.sidebar.profile}</h2>
             <dl>
-              <dt>University</dt><dd>{t.sidebar.school}</dd>
-              <dt>Major</dt><dd>{t.sidebar.major}</dd>
-              <dt>Location</dt><dd>{t.location}</dd>
+              <dt>{t.profileLabels[0]}</dt><dd>{t.sidebar.school}</dd>
+              <dt>{t.profileLabels[1]}</dt><dd>{t.sidebar.major}</dd>
+              <dt>{t.profileLabels[2]}</dt><dd>{t.location}</dd>
             </dl>
           </section>
           <section>
@@ -443,7 +462,7 @@ export default function Home() {
       <footer className="footer">
         <div className="shell">
           <p>© 2026 Yanbao Li. {t.footer}</p>
-          <a href="#top">Back to top ↑</a>
+          <a href="#top">{t.backToTop}</a>
         </div>
       </footer>
     </main>

@@ -13,31 +13,39 @@ async function render() {
   );
 }
 
-test("server-renders the bilingual English-first portfolio", async () => {
+test("server-renders the public English-first portfolio", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
   assert.match(html, /<html lang="en">/i);
-  assert.match(html, /<title>Yanbao Li \(Yan\) — Personal Homepage<\/title>/i);
-  assert.match(html, /Personal Homepage/);
+  assert.match(html, /Yanbao Li \(Yan\) — Personal Homepage/);
+  assert.match(html, /Selected Projects/);
   assert.match(html, /Information Systems student/);
-  assert.match(html, />EN</);
-  assert.match(html, />中</);
-  assert.match(html, /https:\/\/github\.com\/Owl-Lee\/VideoHarvester/);
-  assert.match(html, /https:\/\/github\.com\/Owl-Lee\/AdMind/);
   assert.match(html, /https:\/\/github\.com\/Owl-Lee\/Sona-Player/);
-  assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
+  assert.match(html, /aria-label="Language selection"/);
+  assert.doesNotMatch(html, /Your site is taking shape|codex-preview/i);
 });
 
-test("keeps required public assets and bilingual project data", async () => {
-  const [page] = await Promise.all([
+test("keeps complete English and Chinese content in the client source", async () => {
+  const [page, css, readme] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
+    readFile(new URL("../README.md", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(page, /type Language = "en" \| "zh"/);
+  assert.match(page, /Selected Projects/);
+  assert.match(page, /主要项目/);
+  assert.match(page, /Primary navigation/);
+  assert.match(page, /主导航/);
+  assert.match(page, /Back to top/);
+  assert.match(page, /回到顶部/);
+  assert.match(css, /@media \(max-width: 680px\)/);
+  assert.match(css, /\.repoStatus:not\(\.repoLink\)/);
+  assert.match(readme, /## 简体中文/);
+  await Promise.all([
     access(new URL("../public/Yanbao-Li-Resume.docx", import.meta.url)),
     access(new URL("../public/yanbao-li-photo.png", import.meta.url)),
   ]);
-  assert.match(page, /en:\s*\{/);
-  assert.match(page, /zh:\s*\{/);
-  assert.match(page, /https:\/\/github\.com\/Owl-Lee\/AdMind/);
-  assert.match(page, /https:\/\/github\.com\/Owl-Lee\/Sona-Player/);
 });
