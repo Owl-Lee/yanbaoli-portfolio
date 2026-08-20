@@ -99,7 +99,7 @@ const content = {
         subtitle: "Cross-platform local-first media system",
         body: "Developed a Flutter / Dart music and MV player for Windows and Android with SHA-256 content deduplication, SQLite-backed library management, offline-first playback, playlists, and Supabase sync foundations.",
         tags: "Flutter · Dart · SQLite · Supabase",
-        url: "https://github.com/Owl-Lee/Sona",
+        url: "https://github.com/Owl-Lee/Sona-Player",
       },
       {
         date: "2024—25",
@@ -225,7 +225,7 @@ const content = {
         subtitle: "跨平台本地优先媒体系统",
         body: "开发面向 Windows 与 Android 的 Flutter / Dart 音乐和 MV 播放器，包含 SHA-256 内容去重、SQLite 曲库管理、离线优先播放、歌单与 Supabase 云同步基础设施。",
         tags: "Flutter · Dart · SQLite · Supabase",
-        url: "https://github.com/Owl-Lee/Sona",
+        url: "https://github.com/Owl-Lee/Sona-Player",
       },
       {
         date: "2024—25",
