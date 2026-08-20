@@ -91,7 +91,7 @@ const content = {
         subtitle: "Local-first private music player",
         body: "Built a cross-platform music and MV player for Windows and Android, with local import, SHA-256 duplicate detection, SQLite library management, playlists, offline-first playback, and cloud-sync foundations.",
         tags: "Flutter · Dart · SQLite · Supabase",
-        status: "Private GitHub repository",
+        url: "https://github.com/Owl-Lee/Sona",
       },
       {
         date: "2024—25",
@@ -209,7 +209,7 @@ const content = {
         subtitle: "本地优先的私人音乐播放器",
         body: "构建面向 Windows 与 Android 的音乐和 MV 播放器，支持本地导入、SHA-256 去重、SQLite 曲库与歌单、离线优先播放，以及云同步基础设施。",
         tags: "Flutter · Dart · SQLite · Supabase",
-        status: "私有 GitHub 仓库",
+        url: "https://github.com/Owl-Lee/Sona",
       },
       {
         date: "2024—25",
