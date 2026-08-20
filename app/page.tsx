@@ -76,6 +76,14 @@ const content = {
         linkLabel: "Read paper ↗",
       },
       {
+        date: "2025",
+        order: 20250906,
+        title: "Wave Energy System Optimization",
+        subtitle: "Model fitting and parameter optimization",
+        body: "Built a Random Forest fitting workflow and implemented genetic-algorithm and Bayesian-optimization parameter tuning to improve prediction accuracy and optimize damping parameters in a modeling competition project.",
+        tags: "Python · Random Forest · Genetic Algorithms · Bayesian Optimization",
+      },
+      {
         date: "2026",
         order: 20260815,
         title: "AdMind",
@@ -192,6 +200,14 @@ const content = {
         tags: "Python · 贝叶斯优化 · 遗传算法 · NSGA-II",
         url: "/cumcm-2025-drone-optimization-paper.pdf",
         linkLabel: "阅读论文 ↗",
+      },
+      {
+        date: "2025",
+        order: 20250906,
+        title: "波浪能系统优化",
+        subtitle: "模型拟合与参数优化",
+        body: "构建随机森林拟合流程，并实现遗传算法与贝叶斯优化的参数调优，以提升预测准确度并优化阻尼参数。",
+        tags: "Python · 随机森林 · 遗传算法 · 贝叶斯优化",
       },
       {
         date: "2026",
