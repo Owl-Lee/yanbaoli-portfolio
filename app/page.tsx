@@ -113,6 +113,7 @@ const content = {
     ],
     awardsTitle: "Awards & Leadership",
     awards: [
+      ["2026—27", "Stony Brook University Tuition Scholarship", "2026–2027 Academic Year"],
       ["2025", "CUMCM Mathematical Modeling Competition", "Third Prize"],
       ["2025", "ICM Mathematical Contest in Modeling", "Successful Participant"],
       ["2025", "Innovation & Entrepreneurship Competition", "Excellence Award"],
@@ -243,6 +244,7 @@ const content = {
     ],
     awardsTitle: "奖项与经历",
     awards: [
+      ["2026—27", "石溪大学学费奖学金", "2026—2027 学年"],
       ["2025", "全国大学生数学建模竞赛", "三等奖"],
       ["2025", "美国大学生数学建模竞赛（ICM）", "Successful Participant"],
       ["2025", "创新创业竞赛", "优秀奖"],
