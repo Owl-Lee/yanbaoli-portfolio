@@ -50,7 +50,7 @@ test("keeps complete English and Chinese content in the client source", async ()
   assert.match(readme, /## 简体中文/);
   await Promise.all([
     access(new URL("../public/Yanbao-Li-Resume.pdf", import.meta.url)),
-    access(new URL("../public/yanbao-li-photo.webp", import.meta.url)),
+    access(new URL("../public/yanbao-li-photo.jpg", import.meta.url)),
     access(new URL("../public/robots.txt", import.meta.url)),
     access(new URL("../public/sitemap.xml", import.meta.url)),
   ]);

@@ -407,33 +407,34 @@ export default function Home() {
           <p className="intro">{t.intro}</p>
           <div className="profileMeta">
             <span className="metaSchool">
-              <Image src="/brands/sbu-logo.jpg" alt="Stony Brook University" width={174} height={31} />
+              <Image src="/brands/sbu-logo.jpg" alt="Stony Brook University" width={174} height={31} unoptimized />
             </span>
             <span>{t.location}</span>
           </div>
           <div className="profileLinks">
             <a href="mailto:liyanbao06@outlook.com">
-              <Image className="socialIcon" src="/brands/outlook.svg" alt="" width={20} height={20} aria-hidden="true" />
+              <Image className="socialIcon" src="/brands/outlook.svg" alt="" width={20} height={20} aria-hidden="true" unoptimized />
               <span>Outlook</span>
             </a>
             <a href="https://github.com/Owl-Lee" target="_blank" rel="noreferrer">
-              <Image className="socialIcon" src="/brands/github.svg" alt="" width={20} height={20} aria-hidden="true" />
+              <Image className="socialIcon" src="/brands/github.svg" alt="" width={20} height={20} aria-hidden="true" unoptimized />
               <span>GitHub</span>
             </a>
             <a href="https://www.linkedin.com/in/yanbao-li-772a45377/" target="_blank" rel="noreferrer">
-              <Image className="socialIcon linkedinIcon" src="/brands/linkedin.svg" alt="" width={20} height={20} aria-hidden="true" />
+              <Image className="socialIcon linkedinIcon" src="/brands/linkedin.svg" alt="" width={20} height={20} aria-hidden="true" unoptimized />
               <span>LinkedIn</span>
             </a>
           </div>
         </div>
         <div className="portrait">
           <Image
-            src="/yanbao-li-photo.webp"
+            src="/yanbao-li-photo.jpg"
             alt="Yanbao Li"
             width={512}
             height={768}
             sizes="(max-width: 680px) 230px, (max-width: 900px) 210px, 250px"
             priority
+            unoptimized
           />
           <div className="portraitCaption">
             <strong>Yanbao Li</strong>
@@ -467,6 +468,7 @@ export default function Home() {
                         alt={schoolLogos[index].alt}
                         width={schoolLogos[index].width}
                         height={schoolLogos[index].height}
+                        unoptimized
                       />
                     </div>
                     <div>

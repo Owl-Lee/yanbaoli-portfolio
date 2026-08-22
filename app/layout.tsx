@@ -32,7 +32,7 @@ const personJsonLd = {
   name: "Yanbao Li",
   alternateName: "Yan",
   url: "https://yanbaoli.me",
-  image: "https://yanbaoli.me/yanbao-li-photo.webp",
+  image: "https://yanbaoli.me/yanbao-li-photo.jpg",
   jobTitle: "Information Systems Student",
   affiliation: {
     "@type": "CollegeOrUniversity",
