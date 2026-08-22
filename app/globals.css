@@ -184,6 +184,22 @@ a:focus-visible, button:focus-visible {
   vertical-align: middle;
 }
 .intro { max-width: 740px; margin: 24px 0 0; color: var(--muted); font-size: 1.12rem; line-height: 1.78; }
+.heroActions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
+.heroAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 9px 16px;
+  border: 1px solid var(--navy);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+.heroActionPrimary { background: var(--navy); color: white; }
+.heroActionSecondary { background: white; color: var(--navy); }
+.heroAction:hover { border-color: var(--accent); background: var(--accent); color: white; }
 .profileMeta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; margin-top: 24px; color: #424b58; font-size: 0.91rem; }
 .profileMeta span::before { content: "— "; color: var(--accent); }
 .profileMeta .metaSchool::before { content: none; }
@@ -293,8 +309,26 @@ a:focus-visible, button:focus-visible {
 }
 .projectRows article { display: grid; grid-template-columns: 62px minmax(0, 1fr) 144px; gap: 20px; padding: 28px 0; border-bottom: 1px solid var(--line); }
 .projectSubtitle { margin: 0 0 5px !important; color: var(--accent) !important; font-family: var(--sans) !important; font-size: 0.77rem !important; font-weight: 700; letter-spacing: 0.035em; text-transform: uppercase; }
-.projectInfo h4 { margin: 0 0 10px; font-family: var(--serif); font-size: 1.22rem; }
-.projectInfo > p { margin: 0; color: #454f5d; font-size: 0.96rem; line-height: 1.76; }
+.projectHeading { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 10px; }
+.projectInfo h4 { margin: 0; font-family: var(--serif); font-size: 1.22rem; }
+.projectStatus {
+  display: inline-flex !important;
+  width: fit-content;
+  margin: 0 !important;
+  padding: 3px 7px;
+  border: 1px solid #d8b9bf;
+  background: var(--accent-soft);
+  color: var(--accent) !important;
+  font-family: var(--sans) !important;
+  font-size: 0.63rem !important;
+  font-weight: 750;
+  letter-spacing: 0.035em;
+  line-height: 1.35 !important;
+  text-transform: uppercase;
+}
+.projectSummary { margin: 0; color: #3f4956; font-size: 0.96rem; font-weight: 600; line-height: 1.68; }
+.projectHighlights { margin: 10px 0 0; padding-left: 1.15rem; color: #4a5360; font-size: 0.9rem; line-height: 1.62; }
+.projectHighlights li + li { margin-top: 5px; }
 .projectInfo > span { display: block; margin-top: 14px; color: var(--faint); font-family: var(--mono); font-size: 0.74rem; line-height: 1.55; }
   .repoStatus { align-self: start; color: #68717c; font-size: 0.72rem; line-height: 1.45; text-align: right; text-transform: uppercase; }
   .repoLink { display: inline-flex; align-items: center; min-height: 32px; color: var(--navy); font-weight: 700; text-decoration: none; }

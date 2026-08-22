@@ -30,6 +30,12 @@ test("server-renders the public English-first portfolio", async () => {
   assert.match(html, /https:\/\/admind-decision-console\.liyanbao06\.chatgpt\.site\//);
   assert.match(html, /https:\/\/owl-lee\.github\.io\/Sona-Player\//);
   assert.match(html, /Open live demo/);
+  assert.match(html, /View Résumé/);
+  assert.match(html, /Email Me/);
+  assert.match(html, /Released · Windows/);
+  assert.match(html, /Public Demo · Web\/API/);
+  assert.match(html, /Anhui University Student Innovation Competition/);
+  assert.match(html, /Merit Award/);
   assert.match(html, /unfinished-task recovery/);
   assert.match(html, /aria-label="Language selection"/);
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview/i);
@@ -58,5 +64,7 @@ test("keeps complete English and Chinese content in the client source", async ()
     access(new URL("../public/yanbao-li-photo.jpg", import.meta.url)),
     access(new URL("../public/robots.txt", import.meta.url)),
     access(new URL("../public/sitemap.xml", import.meta.url)),
+    access(new URL("../public/og.png", import.meta.url)),
+    access(new URL("../public/favicon.png", import.meta.url)),
   ]);
 });

@@ -17,7 +17,7 @@ const content = {
     greeting: "Hi, I’m Yan.",
     role: "Information Systems student · Software & Applied AI",
     intro:
-      "Information Systems student at Stony Brook University. I enjoy building reliable software systems and turning machine learning ideas into practical applications.",
+      "Information Systems student at Stony Brook University building local-first desktop apps and explainable AI services. I’ve shipped Windows and Android previews, public web demos, and data-driven modeling work.",
     location: "Stony Brook, New York",
     statusTitle: "Currently",
     status:
@@ -56,7 +56,12 @@ const content = {
         order: 20260816,
         title: "VideoHarvester",
         subtitle: "C# desktop media-processing workflow",
-        body: "Released a local-first Windows app for authorized YouTube and Bilibili downloads. It orchestrates yt-dlp and FFmpeg through asynchronous processing with preflight quality, size, disk-space, and destination checks, plus playlist-aware queues, platform-ID deduplication, persisted history, and unfinished-task recovery.",
+        body: "Released a local-first Windows app for authorized YouTube and Bilibili downloads.",
+        highlights: [
+          "Orchestrates yt-dlp and FFmpeg asynchronously with preflight quality, size, disk-space, and destination checks.",
+          "Adds playlist-aware queues, platform-ID deduplication, persisted history, and unfinished-task recovery.",
+        ],
+        statusLabel: "Released · Windows",
         tags: "C# · Windows Forms · yt-dlp · FFmpeg",
         url: "https://github.com/Owl-Lee/VideoHarvester",
         websiteUrl: "https://videoharvester.app/",
@@ -90,7 +95,12 @@ const content = {
         order: 20260815,
         title: "AdMind",
         subtitle: "Explainable video-ad decision service",
-        body: "Shipped a public three-scenario demo and Fastify API for explainable long-video ad decisions. It normalizes Zod-validated TwelveLabs evidence, combines it with player and campaign constraints in a typed deterministic policy engine, and uses browser-side MediaPipe to score four pause-ad positions with auditable reasons.",
+        body: "Shipped a public three-scenario demo and Fastify API for explainable long-video ad decisions.",
+        highlights: [
+          "Normalizes Zod-validated TwelveLabs evidence and combines it with player and campaign constraints in a typed deterministic policy engine.",
+          "Uses browser-side MediaPipe to score four pause-ad positions and return auditable reasons, including when no safe area exists.",
+        ],
+        statusLabel: "Public Demo · Web/API",
         tags: "TypeScript · Fastify · Zod · TwelveLabs · MediaPipe",
         url: "https://github.com/Owl-Lee/AdMind",
         websiteUrl: "https://admind-decision-console.liyanbao06.chatgpt.site/",
@@ -102,7 +112,12 @@ const content = {
         order: 20260814,
         title: "Sona",
         subtitle: "Cross-platform local-first media system",
-        body: "Released Windows and Android preview builds of a local-first Flutter / Dart music and MV player. It unifies the offline library, playlists, queue, and history around SQLite, with SHA-256 deduplication, layered metadata matching through MusicBrainz and optional Chromaprint / AcoustID fallback, plus an optional Supabase synchronization foundation.",
+        body: "Released Windows and Android preview builds of a local-first Flutter / Dart music and MV player.",
+        highlights: [
+          "Unifies the offline library, playlists, queue, and history around SQLite with SHA-256 content deduplication.",
+          "Builds layered metadata matching with MusicBrainz and optional Chromaprint / AcoustID fallback, plus an optional Supabase synchronization foundation.",
+        ],
+        statusLabel: "Preview · Windows & Android",
         tags: "Flutter · Dart · Riverpod · SQLite · Supabase",
         url: "https://github.com/Owl-Lee/Sona-Player",
         websiteUrl: "https://owl-lee.github.io/Sona-Player/",
@@ -124,7 +139,7 @@ const content = {
       ["2026—27", "Stony Brook University Tuition Scholarship", "2026–2027 Academic Year"],
       ["2025", "CUMCM Mathematical Modeling Competition", "Third Prize"],
       ["2025", "ICM Mathematical Contest in Modeling", "Successful Participant"],
-      ["2025", "Innovation & Entrepreneurship Competition", "Excellence Award"],
+      ["2025", "Anhui University Student Innovation Competition", "Merit Award"],
       ["2024—26", "Mathematical Modeling Club, Anhui University", "Co-Lead"],
     ],
     sidebar: {
@@ -150,6 +165,8 @@ const content = {
     profileLabels: ["University", "Major", "Location"],
     backToTop: "Back to top ↑",
     download: "CV / Résumé",
+    viewResume: "View Résumé",
+    emailMe: "Email Me",
     repoSoon: "Repository soon",
     repoSource: "View source ↗",
     photoRole: "Software & AI",
@@ -161,7 +178,7 @@ const content = {
     greeting: "你好，我是 Yan。",
     role: "Information Systems 学生 · 软件与 AI 应用开发",
     intro:
-      "石溪大学 Information Systems 专业学生。我喜欢构建可靠的软件系统，也希望把机器学习想法做成真正有用的应用。",
+      "石溪大学 Information Systems 专业学生，专注本地优先桌面应用与可解释 AI 服务；已发布 Windows、Android 预览版、公开在线演示和数据建模成果。",
     location: "美国纽约州石溪",
     statusTitle: "近期动态",
     status:
@@ -200,7 +217,12 @@ const content = {
         order: 20260816,
         title: "VideoHarvester",
         subtitle: "C# 桌面媒体处理工作流",
-        body: "发布面向 Windows 的本地优先视频保存工具，支持已获授权的 YouTube 与 Bilibili 单视频、播放列表及合集任务；以异步流程编排 yt-dlp 和 FFmpeg，并实现下载前画质、体积、磁盘空间与保存位置检查，以及平台 ID 去重、持久化历史和未完成任务恢复。",
+        body: "发布面向 Windows 的本地优先视频保存工具，支持已获授权的 YouTube 与 Bilibili 下载任务。",
+        highlights: [
+          "以异步流程编排 yt-dlp 和 FFmpeg，并在下载前检查画质、体积、磁盘空间与保存位置。",
+          "实现播放列表队列、平台 ID 去重、持久化历史和未完成任务恢复。",
+        ],
+        statusLabel: "已发布 · Windows",
         tags: "C# · Windows Forms · yt-dlp · FFmpeg",
         url: "https://github.com/Owl-Lee/VideoHarvester",
         websiteUrl: "https://videoharvester.app/",
@@ -234,7 +256,12 @@ const content = {
         order: 20260815,
         title: "AdMind",
         subtitle: "可解释的视频广告决策服务",
-        body: "发布包含三个决策场景的公开演示与 Fastify API：将通过 Zod 校验的 TwelveLabs 证据标准化，再与播放器状态和广告约束交给类型化确定性策略引擎；浏览器端 MediaPipe 对暂停画面的四个候选位置评分，并输出可审计的决策理由。",
+        body: "发布包含三个决策场景的公开演示与 Fastify API，用于可解释的长视频广告决策。",
+        highlights: [
+          "将通过 Zod 校验的 TwelveLabs 证据标准化，再与播放器状态和广告约束交给类型化确定性策略引擎。",
+          "浏览器端 MediaPipe 对暂停画面的四个候选位置评分，并输出可审计理由，包括没有安全位置的情况。",
+        ],
+        statusLabel: "公开演示 · Web/API",
         tags: "TypeScript · Fastify · Zod · TwelveLabs · MediaPipe",
         url: "https://github.com/Owl-Lee/AdMind",
         websiteUrl: "https://admind-decision-console.liyanbao06.chatgpt.site/",
@@ -246,7 +273,12 @@ const content = {
         order: 20260814,
         title: "Sona",
         subtitle: "跨平台本地优先媒体系统",
-        body: "发布 Windows 与 Android 预览版的本地优先 Flutter / Dart 音乐与 MV 播放器，以 SQLite 统一离线曲库、歌单、队列与播放记录，并实现 SHA-256 内容去重、通过 MusicBrainz 与可选 Chromaprint / AcoustID 回退完成的分层元数据识别，以及可选 Supabase 同步基础设施。",
+        body: "发布 Windows 与 Android 预览版的本地优先 Flutter / Dart 音乐与 MV 播放器。",
+        highlights: [
+          "以 SQLite 统一离线曲库、歌单、队列与播放记录，并通过 SHA-256 内容哈希稳定去重。",
+          "构建 MusicBrainz 与可选 Chromaprint / AcoustID 回退的分层元数据流程，并提供可选 Supabase 同步基础。",
+        ],
+        statusLabel: "预览版 · Windows 与 Android",
         tags: "Flutter · Dart · Riverpod · SQLite · Supabase",
         url: "https://github.com/Owl-Lee/Sona-Player",
         websiteUrl: "https://owl-lee.github.io/Sona-Player/",
@@ -268,7 +300,7 @@ const content = {
       ["2026—27", "石溪大学学费奖学金", "2026—2027 学年"],
       ["2025", "全国大学生数学建模竞赛", "三等奖"],
       ["2025", "美国大学生数学建模竞赛（ICM）", "Successful Participant"],
-      ["2025", "创新创业竞赛", "优秀奖"],
+      ["2025", "安徽大学大学生创新大赛", "优胜奖"],
       ["2024—26", "安徽大学数学建模社团", "联合负责人"],
     ],
     sidebar: {
@@ -294,6 +326,8 @@ const content = {
     profileLabels: ["学校", "专业", "所在地"],
     backToTop: "回到顶部 ↑",
     download: "下载简历",
+    viewResume: "查看简历",
+    emailMe: "给我发邮件",
     repoSoon: "代码即将公开",
     repoSource: "查看源码 ↗",
     photoRole: "软件工程与 AI",
@@ -364,7 +398,7 @@ export default function Home() {
             <a href="#education">{t.nav[1]}</a>
             <a href="#projects">{t.nav[2]}</a>
             <a href="#awards">{t.nav[3]}</a>
-            <a href="/Yanbao-Li-Resume.pdf" download>{t.download}</a>
+            <a href="/Yanbao-Li-Resume.pdf" target="_blank" rel="noreferrer">{t.download}</a>
           </nav>
           <nav className="mobileNav" aria-label={t.navigationLabel}>
             <button
@@ -382,7 +416,7 @@ export default function Home() {
                 <a href="#education" onClick={closeMobileMenu}>{t.nav[1]}</a>
                 <a href="#projects" onClick={closeMobileMenu}>{t.nav[2]}</a>
                 <a href="#awards" onClick={closeMobileMenu}>{t.nav[3]}</a>
-                <a href="/Yanbao-Li-Resume.pdf" download onClick={closeMobileMenu}>{t.download}</a>
+                <a href="/Yanbao-Li-Resume.pdf" target="_blank" rel="noreferrer" onClick={closeMobileMenu}>{t.download}</a>
               </div>
             )}
           </nav>
@@ -417,6 +451,14 @@ export default function Home() {
           <h1>Yanbao Li <span>Yan</span></h1>
           <p className="role">{t.role}</p>
           <p className="intro">{t.intro}</p>
+          <div className="heroActions">
+            <a className="heroAction heroActionPrimary" href="/Yanbao-Li-Resume.pdf" target="_blank" rel="noreferrer">
+              {t.viewResume}
+            </a>
+            <a className="heroAction heroActionSecondary" href="mailto:liyanbao06@outlook.com">
+              {t.emailMe}
+            </a>
+          </div>
           <div className="profileMeta">
             <span className="metaSchool">
               <Image src="/brands/sbu-logo.jpg" alt="Stony Brook University" width={174} height={31} unoptimized />
@@ -512,8 +554,18 @@ export default function Home() {
                         <div className="projectDate">{project.date}</div>
                         <div className="projectInfo">
                           <p className="projectSubtitle">{project.subtitle}</p>
-                          <h4>{project.title}</h4>
-                          <p>{project.body}</p>
+                          <div className="projectHeading">
+                            <h4>{project.title}</h4>
+                            {"statusLabel" in project && project.statusLabel && (
+                              <span className="projectStatus">{project.statusLabel}</span>
+                            )}
+                          </div>
+                          <p className="projectSummary">{project.body}</p>
+                          {"highlights" in project && project.highlights && (
+                            <ul className="projectHighlights">
+                              {project.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+                            </ul>
+                          )}
                           <span>{project.tags}</span>
                         </div>
                         {"websiteUrl" in project ? (

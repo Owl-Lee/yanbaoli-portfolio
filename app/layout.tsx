@@ -5,24 +5,25 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://yanbaoli.me"),
   title: "Yanbao Li (Yan) — Personal Homepage",
   description:
-    "Personal homepage of Yanbao Li (Yan), an Information Systems student at Stony Brook University interested in software engineering and applied AI.",
+    "Portfolio of Yanbao Li (Yan), a Stony Brook Information Systems student shipping local-first software and explainable AI projects.",
   alternates: {
     canonical: "/",
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: [{ url: "/favicon.png", type: "image/png", sizes: "256x256" }],
+    apple: [{ url: "/favicon.png", type: "image/png", sizes: "256x256" }],
   },
   openGraph: {
     title: "Yanbao Li — Software Engineering · Applied AI",
-    description: "Personal homepage of Yanbao Li (Yan), Stony Brook University.",
+    description: "Stony Brook Information Systems student shipping local-first software and explainable AI projects.",
     type: "website",
-    images: [{ url: "/og.jpg", width: 1200, height: 800, alt: "Yanbao Li personal homepage" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Yanbao Li — Software Engineering and Applied AI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Yanbao Li — Software Engineering · Applied AI",
-    description: "Personal homepage of Yanbao Li (Yan), Stony Brook University.",
-    images: ["/og.jpg"],
+    description: "Stony Brook Information Systems student shipping local-first software and explainable AI projects.",
+    images: ["/og.png"],
   },
 };
 
