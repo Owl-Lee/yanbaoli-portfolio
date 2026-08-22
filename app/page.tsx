@@ -1,12 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 type Language = "en" | "zh";
 
 const schoolLogos = [
-  { src: "/brands/sbu-logo.jpg", alt: "Stony Brook University logo", className: "sbuLogo" },
-  { src: "/brands/ahu-logo.png", alt: "Anhui University logo", className: "ahuLogo" },
+  { src: "/brands/sbu-logo.jpg", alt: "Stony Brook University logo", className: "sbuLogo", width: 154, height: 55 },
+  { src: "/brands/ahu-logo.png", alt: "Anhui University logo", className: "ahuLogo", width: 154, height: 55 },
 ];
 
 const content = {
@@ -138,10 +139,11 @@ const content = {
     footer: "Designed and built by Yanbao Li.",
     navigationLabel: "Primary navigation",
     languageLabel: "Language selection",
+    mobileMenuLabel: "Menu",
+    skipToContent: "Skip to content",
     profileLabels: ["University", "Major", "Location"],
     backToTop: "Back to top ↑",
     download: "CV / Résumé",
-    mobileNav: ["Projects", "CV"],
     repoSoon: "Repository soon",
     repoSource: "View source ↗",
     photoRole: "Software & AI",
@@ -275,10 +277,11 @@ const content = {
     footer: "由 Yanbao Li 设计与开发。",
     navigationLabel: "主导航",
     languageLabel: "语言选择",
+    mobileMenuLabel: "菜单",
+    skipToContent: "跳至主要内容",
     profileLabels: ["学校", "专业", "所在地"],
     backToTop: "回到顶部 ↑",
     download: "下载简历",
-    mobileNav: ["项目", "简历"],
     repoSoon: "代码即将公开",
     repoSource: "查看源码 ↗",
     photoRole: "软件工程与 AI",
@@ -288,7 +291,20 @@ const content = {
 
 export default function Home() {
   const [language, setLanguage] = useState<Language>("en");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const t = content[language];
+
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("lang");
+    const stored = window.localStorage.getItem("yanbao-portfolio-language");
+    const preferred = requested === "en" || requested === "zh"
+      ? requested
+      : stored === "en" || stored === "zh"
+        ? stored
+        : "en";
+    const timer = window.setTimeout(() => setLanguage(preferred), 0);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
@@ -297,8 +313,30 @@ export default function Home() {
       : "Yanbao Li (Yan) — Personal Homepage";
   }, [language]);
 
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileMenuOpen(false);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [mobileMenuOpen]);
+
+  const chooseLanguage = (nextLanguage: Language) => {
+    setLanguage(nextLanguage);
+    setMobileMenuOpen(false);
+    window.localStorage.setItem("yanbao-portfolio-language", nextLanguage);
+    const url = new URL(window.location.href);
+    if (nextLanguage === "zh") url.searchParams.set("lang", "zh");
+    else url.searchParams.delete("lang");
+    window.history.replaceState(window.history.state, "", `${url.pathname}${url.search}${url.hash}`);
+  };
+
+  const closeMobileMenu = () => setMobileMenuOpen(false);
+
   return (
-    <main>
+    <>
+      <a className="skipLink" href="#main-content">{t.skipToContent}</a>
       <header className="siteHeader" id="top">
         <div className="shell headerInner">
           <a
@@ -317,15 +355,32 @@ export default function Home() {
             <a href="/Yanbao-Li-Resume.pdf" download>{t.download}</a>
           </nav>
           <nav className="mobileNav" aria-label={t.navigationLabel}>
-            <a href="#projects">{t.mobileNav[0]}</a>
-            <a href="/Yanbao-Li-Resume.pdf" download>{t.mobileNav[1]}</a>
+            <button
+              type="button"
+              className="mobileMenuButton"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu-panel"
+              onClick={() => setMobileMenuOpen((open) => !open)}
+            >
+              {t.mobileMenuLabel}
+            </button>
+            {mobileMenuOpen && (
+              <div className="mobileMenuPanel" id="mobile-menu-panel">
+                <a href="#about" onClick={closeMobileMenu}>{t.nav[0]}</a>
+                <a href="#education" onClick={closeMobileMenu}>{t.nav[1]}</a>
+                <a href="#projects" onClick={closeMobileMenu}>{t.nav[2]}</a>
+                <a href="#awards" onClick={closeMobileMenu}>{t.nav[3]}</a>
+                <a href="/Yanbao-Li-Resume.pdf" download onClick={closeMobileMenu}>{t.download}</a>
+              </div>
+            )}
           </nav>
-          <div className="languageSwitch" aria-label={t.languageLabel}>
+          <div className="languageSwitch" role="group" aria-label={t.languageLabel}>
             <button
               type="button"
               className={language === "en" ? "active" : ""}
-              onClick={() => setLanguage("en")}
+              onClick={() => chooseLanguage("en")}
               aria-pressed={language === "en"}
+              aria-label="Switch to English"
             >
               EN
             </button>
@@ -333,8 +388,9 @@ export default function Home() {
             <button
               type="button"
               className={language === "zh" ? "active" : ""}
-              onClick={() => setLanguage("zh")}
+              onClick={() => chooseLanguage("zh")}
               aria-pressed={language === "zh"}
+              aria-label="切换到中文"
             >
               中
             </button>
@@ -342,6 +398,7 @@ export default function Home() {
         </div>
       </header>
 
+      <main id="main-content">
       <section className="profileHero shell">
         <div className="profileCopy">
           <p className="greeting">{t.greeting}</p>
@@ -350,27 +407,34 @@ export default function Home() {
           <p className="intro">{t.intro}</p>
           <div className="profileMeta">
             <span className="metaSchool">
-              <img src="/brands/sbu-logo.jpg" alt="Stony Brook University" />
+              <Image src="/brands/sbu-logo.jpg" alt="Stony Brook University" width={174} height={31} />
             </span>
             <span>{t.location}</span>
           </div>
           <div className="profileLinks">
             <a href="mailto:liyanbao06@outlook.com">
-              <img className="socialIcon" src="/brands/outlook.svg" alt="" aria-hidden="true" />
+              <Image className="socialIcon" src="/brands/outlook.svg" alt="" width={20} height={20} aria-hidden="true" />
               <span>Outlook</span>
             </a>
             <a href="https://github.com/Owl-Lee" target="_blank" rel="noreferrer">
-              <img className="socialIcon" src="/brands/github.svg" alt="" aria-hidden="true" />
+              <Image className="socialIcon" src="/brands/github.svg" alt="" width={20} height={20} aria-hidden="true" />
               <span>GitHub</span>
             </a>
             <a href="https://www.linkedin.com/in/yanbao-li-772a45377/" target="_blank" rel="noreferrer">
-              <img className="socialIcon linkedinIcon" src="/brands/linkedin.svg" alt="" aria-hidden="true" />
+              <Image className="socialIcon linkedinIcon" src="/brands/linkedin.svg" alt="" width={20} height={20} aria-hidden="true" />
               <span>LinkedIn</span>
             </a>
           </div>
         </div>
         <div className="portrait">
-          <img src="/yanbao-li-photo.png" alt="Yanbao Li" />
+          <Image
+            src="/yanbao-li-photo.webp"
+            alt="Yanbao Li"
+            width={512}
+            height={768}
+            sizes="(max-width: 680px) 230px, (max-width: 900px) 210px, 250px"
+            priority
+          />
           <div className="portraitCaption">
             <strong>Yanbao Li</strong>
             <span>{t.photoRole}</span>
@@ -398,7 +462,12 @@ export default function Home() {
                   <div className="date">{item.date}</div>
                   <div className="educationBody">
                     <div className={`schoolLogoFrame ${schoolLogos[index].className}`}>
-                      <img src={schoolLogos[index].src} alt={schoolLogos[index].alt} />
+                      <Image
+                        src={schoolLogos[index].src}
+                        alt={schoolLogos[index].alt}
+                        width={schoolLogos[index].width}
+                        height={schoolLogos[index].height}
+                      />
                     </div>
                     <div>
                       <h3>{item.school}</h3>
@@ -484,6 +553,7 @@ export default function Home() {
           </section>
         </aside>
       </div>
+      </main>
 
       <footer className="footer">
         <div className="shell">
@@ -491,6 +561,6 @@ export default function Home() {
           <a href="#top">{t.backToTop}</a>
         </div>
       </footer>
-    </main>
+    </>
   );
 }

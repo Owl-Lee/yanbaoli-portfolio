@@ -17,6 +17,9 @@ test("server-renders the public English-first portfolio", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+  assert.equal(response.headers.get("x-content-type-options"), "nosniff");
+  assert.equal(response.headers.get("x-frame-options"), "DENY");
+  assert.match(response.headers.get("content-security-policy") ?? "", /frame-ancestors 'none'/);
   const html = await response.text();
   assert.match(html, /<html lang="en">/i);
   assert.match(html, /Yanbao Li \(Yan\) — Personal Homepage/);
@@ -25,6 +28,7 @@ test("server-renders the public English-first portfolio", async () => {
   assert.match(html, /https:\/\/github\.com\/Owl-Lee\/Sona-Player/);
   assert.match(html, /aria-label="Language selection"/);
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview/i);
+  assert.doesNotMatch(html, /C:\/Users\/|E:\/Code\//i);
 });
 
 test("keeps complete English and Chinese content in the client source", async () => {
@@ -45,7 +49,9 @@ test("keeps complete English and Chinese content in the client source", async ()
   assert.match(css, /\.repoStatus:not\(\.repoLink\)/);
   assert.match(readme, /## 简体中文/);
   await Promise.all([
-    access(new URL("../public/Yanbao-Li-Resume.docx", import.meta.url)),
-    access(new URL("../public/yanbao-li-photo.png", import.meta.url)),
+    access(new URL("../public/Yanbao-Li-Resume.pdf", import.meta.url)),
+    access(new URL("../public/yanbao-li-photo.webp", import.meta.url)),
+    access(new URL("../public/robots.txt", import.meta.url)),
+    access(new URL("../public/sitemap.xml", import.meta.url)),
   ]);
 });

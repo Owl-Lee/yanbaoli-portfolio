@@ -5,11 +5,13 @@
   --paper: #ffffff;
   --ink: #202631;
   --muted: #505966;
-  --faint: #6f7782;
+  --faint: #626b76;
   --line: #dfe2e7;
   --accent: #b51f36;
   --accent-soft: #f6e9eb;
   --navy: #20314c;
+  --sans: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Cascadia Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --serif: Georgia, "Times New Roman", serif;
 }
 
@@ -19,7 +21,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: var(--font-geist-sans), "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--sans);
   font-size: 17px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
@@ -27,9 +29,22 @@ body {
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
 a:focus-visible, button:focus-visible {
-  outline: 3px solid rgba(181, 31, 54, 0.26);
+  outline: 3px solid var(--accent);
   outline-offset: 3px;
 }
+.skipLink {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+  transform: translateY(-160%);
+  padding: 10px 14px;
+  background: var(--navy);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.skipLink:focus { transform: translateY(0); }
 .shell { width: min(1120px, calc(100% - 44px)); margin-inline: auto; }
 
 .siteHeader {
@@ -48,20 +63,53 @@ a:focus-visible, button:focus-visible {
   align-items: center;
   gap: 34px;
 }
-.identity { display: flex; align-items: baseline; gap: 11px; }
+.identity { display: flex; align-items: center; gap: 11px; min-height: 44px; }
 .identity strong { font-family: var(--serif); font-size: 1.14rem; }
 .identity span { color: var(--faint); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; }
 .navLinks { display: flex; align-items: center; gap: 24px; }
-.mobileNav { display: none; align-items: center; justify-content: flex-end; gap: 14px; }
-.mobileNav a {
+.mobileNav { position: relative; display: none; align-items: center; justify-content: flex-end; }
+.mobileMenuButton {
+  min-width: 48px;
+  min-height: 44px;
+  padding: 6px 10px;
+  border: 0;
+  background: transparent;
   color: #4e5663;
+  cursor: pointer;
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.045em;
   text-transform: uppercase;
 }
-.mobileNav a:hover { color: var(--accent); }
+.mobileMenuButton:hover { color: var(--accent); }
+.mobileMenuPanel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 30;
+  display: grid;
+  width: 220px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  background: white;
+  box-shadow: 0 14px 35px rgba(22, 31, 45, 0.16);
+}
+.mobileMenuPanel a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 7px 10px;
+  color: #414a57;
+  font-size: 0.79rem;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+.mobileMenuPanel a:hover { background: var(--accent-soft); color: var(--accent); }
 .navLinks a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   color: #4e5663;
   font-size: 0.79rem;
   font-weight: 650;
@@ -79,7 +127,9 @@ a:focus-visible, button:focus-visible {
   background: var(--bg);
 }
 .languageSwitch button {
-  padding: 1px 3px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 4px 5px;
   border: 0;
   background: transparent;
   color: var(--faint);
@@ -107,7 +157,7 @@ a:focus-visible, button:focus-visible {
 .role {
   margin: 18px 0 0;
   color: var(--muted);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--mono);
   font-size: 0.78rem;
   font-weight: 650;
   letter-spacing: 0.08em;
@@ -127,7 +177,7 @@ a:focus-visible, button:focus-visible {
   padding: 6px 10px 5px;
   border: 1px solid #c8ccd3;
   color: var(--muted);
-  font-family: var(--font-geist-sans), Arial, sans-serif;
+  font-family: var(--sans);
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.03em;
@@ -150,7 +200,7 @@ a:focus-visible, button:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  min-height: 32px;
+  min-height: 36px;
   border-bottom: 1px solid #858c96;
   padding-bottom: 3px;
   font-size: 0.9rem;
@@ -221,7 +271,7 @@ a:focus-visible, button:focus-visible {
 }
 .schoolLogoFrame img { display: block; max-width: 100%; max-height: 55px; object-fit: contain; }
 .schoolLogoFrame.sbuLogo img { width: 154px; max-width: none; max-height: none; }
-.date, .projectDate { color: var(--accent); font-family: var(--font-geist-mono), monospace; font-size: 0.77rem; letter-spacing: 0.025em; }
+.date, .projectDate { color: var(--accent); font-family: var(--mono); font-size: 0.77rem; letter-spacing: 0.025em; }
 .educationList h3 { margin: 0 0 6px; font-family: var(--serif); font-size: 1.18rem; }
 .educationList p { margin: 0 0 6px; color: #3f4855; font-size: 0.97rem; }
 .educationList span { color: var(--faint); font-size: 0.86rem; }
@@ -236,36 +286,38 @@ a:focus-visible, button:focus-visible {
   padding: 10px 0;
   border-bottom: 1px solid var(--navy);
   color: var(--navy);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--mono);
   font-size: 0.78rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 .projectRows article { display: grid; grid-template-columns: 62px minmax(0, 1fr) 98px; gap: 20px; padding: 28px 0; border-bottom: 1px solid var(--line); }
-.projectSubtitle { margin: 0 0 5px !important; color: var(--accent) !important; font-family: var(--font-geist-sans), Arial, sans-serif !important; font-size: 0.77rem !important; font-weight: 700; letter-spacing: 0.035em; text-transform: uppercase; }
+.projectSubtitle { margin: 0 0 5px !important; color: var(--accent) !important; font-family: var(--sans) !important; font-size: 0.77rem !important; font-weight: 700; letter-spacing: 0.035em; text-transform: uppercase; }
 .projectInfo h4 { margin: 0 0 10px; font-family: var(--serif); font-size: 1.22rem; }
 .projectInfo > p { margin: 0; color: #454f5d; font-size: 0.96rem; line-height: 1.76; }
-.projectInfo > span { display: block; margin-top: 14px; color: var(--faint); font-family: var(--font-geist-mono), monospace; font-size: 0.74rem; line-height: 1.55; }
+.projectInfo > span { display: block; margin-top: 14px; color: var(--faint); font-family: var(--mono); font-size: 0.74rem; line-height: 1.55; }
   .repoStatus { align-self: start; color: #68717c; font-size: 0.72rem; line-height: 1.45; text-align: right; text-transform: uppercase; }
-  .repoLink { color: var(--navy); font-weight: 700; text-decoration: none; }
+  .repoLink { display: inline-flex; align-items: center; min-height: 32px; color: var(--navy); font-weight: 700; text-decoration: none; }
   .repoLink:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
 
 .awardList { border-top: 1px solid var(--line); }
 .awardList > div { display: grid; grid-template-columns: 85px minmax(0, 1fr) 120px; gap: 20px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); }
-.awardList span { color: var(--accent); font-family: var(--font-geist-mono), monospace; font-size: 0.76rem; }
+.awardList span { color: var(--accent); font-family: var(--mono); font-size: 0.76rem; }
 .awardList strong { font-family: var(--serif); font-size: 1.02rem; font-weight: 500; }
 .awardList em { color: var(--muted); font-size: 0.84rem; font-style: normal; text-align: right; }
 
 .sidebar { border-left: 1px solid var(--line); padding-left: 30px; }
 .sidebar section { margin-bottom: 38px; }
-.sidebar h2 { margin: 0 0 15px; color: var(--accent); font-family: var(--font-geist-mono), monospace; font-size: 0.77rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.sidebar h2 { margin: 0 0 15px; color: var(--accent); font-family: var(--mono); font-size: 0.77rem; letter-spacing: 0.06em; text-transform: uppercase; }
 .sidebar dl { margin: 0; }
 .sidebar dt { margin-top: 13px; color: var(--faint); font-size: 0.72rem; text-transform: uppercase; }
 .sidebar dd { margin: 3px 0 0; color: #38414d; font-family: var(--serif); font-size: 0.94rem; line-height: 1.52; }
 .sidebar ul { margin: 0; padding: 0; list-style: none; }
 .sidebar li { padding: 9px 0; border-bottom: 1px solid var(--line); color: #424b58; font-size: 0.86rem; line-height: 1.52; }
 .sidebar .email {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
   color: var(--navy);
   font-family: var(--serif);
   font-size: 0.92rem;
@@ -277,6 +329,7 @@ a:focus-visible, button:focus-visible {
 .footer { padding-block: 30px; background: var(--navy); color: #b8c0cc; }
 .footer .shell { display: flex; justify-content: space-between; gap: 20px; }
 .footer p, .footer a { margin: 0; font-size: 0.77rem; }
+.footer a { display: inline-flex; align-items: center; min-height: 32px; }
 .footer a:hover { color: white; }
 
 @media (max-width: 900px) {
@@ -285,7 +338,15 @@ a:focus-visible, button:focus-visible {
   .mobileNav { display: flex; }
   .profileHero { grid-template-columns: 1fr 210px; gap: 38px; }
   .portrait { height: 272px; }
-  .pageGrid { grid-template-columns: minmax(0, 1fr) 210px; gap: 45px; }
+  .pageGrid { grid-template-columns: 1fr; gap: 58px; }
+  .sidebar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 36px;
+    border-top: 2px solid var(--navy);
+    border-left: 0;
+    padding: 28px 0 0;
+  }
 }
 
 @media (max-width: 680px) {
@@ -298,8 +359,8 @@ a:focus-visible, button:focus-visible {
   .news { grid-template-columns: 1fr; }
   .news h2 { padding: 18px 20px 0; border-right: 0; }
   .news p { padding: 15px 20px 20px; }
-  .pageGrid { grid-template-columns: 1fr; gap: 65px; padding-block: 52px 70px; }
-  .sidebar { border-left: 0; border-top: 2px solid var(--navy); padding: 26px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 28px; }
+  .pageGrid { gap: 65px; padding-block: 52px 70px; }
+  .sidebar { gap: 10px 28px; padding-top: 26px; }
   .educationList article { grid-template-columns: 1fr; gap: 10px; }
   .projectRows article { grid-template-columns: 50px 1fr; }
   .repoStatus:not(.repoLink) { display: none; }
@@ -311,12 +372,12 @@ a:focus-visible, button:focus-visible {
 @media (max-width: 430px) {
   .identity strong { font-size: 1rem; }
   .headerInner { gap: 11px; }
-  .mobileNav { gap: 9px; }
-  .mobileNav a { font-size: 0.68rem; }
+  .mobileMenuButton { min-width: 44px; padding-inline: 7px; font-size: 0.68rem; }
   .languageSwitch { padding-inline: 6px; }
   .profileCopy h1 { font-size: 3.1rem; }
   .educationBody { grid-template-columns: 1fr; }
   .schoolLogoFrame { width: 142px; }
+  .schoolLogoFrame.sbuLogo img { width: 100%; max-width: 100%; height: auto; }
   .sidebar { grid-template-columns: 1fr; }
   .projectRows article { grid-template-columns: 1fr; gap: 10px; }
   .repoLink { grid-column: auto; }

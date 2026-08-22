@@ -13,6 +13,7 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
+    "types": ["@cloudflare/workers-types"],
     "paths": {
       "@/*": ["./*"]
     }
@@ -25,5 +26,15 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    ".next",
+    ".vinext",
+    "dist",
+    "output",
+    "tmp",
+    "work",
+    ".site-package*",
+    ".award-stage-*"
+  ]
 }
