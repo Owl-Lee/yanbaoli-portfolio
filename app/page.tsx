@@ -23,9 +23,8 @@ const content = {
       "I’m looking for software engineering and applied AI opportunities where I can contribute, learn quickly, and build useful systems with a strong team.",
     aboutTitle: "Biography",
     about: [
-      "My name is Yanbao Li, and I also go by Yan. I am currently studying Information Systems at Stony Brook University after transferring from Anhui University, where I studied Digital Media Technology.",
-      "My interests sit at the intersection of backend engineering, applied machine learning, and data-driven problem solving. I have built Java services, designed deep learning models, and worked on mathematical optimization problems in team competitions.",
-      "I care about understanding how a system works—not only getting a model or feature to run. I am especially interested in roles where thoughtful engineering can make AI systems more reliable and useful.",
+      "I’m Yanbao Li, and I also go by Yan. I study Information Systems at Stony Brook University after transferring from Anhui University, where I studied Digital Media Technology.",
+      "I build practical software across desktop, cross-platform, and AI-assisted systems. My recent work includes C# media workflows, Flutter / Dart local-first applications, TypeScript / Fastify services, and multimodal model experimentation involving data preparation, parameter tuning, and evaluation. I care about clear system design and building features that remain useful beyond a demo.",
     ],
     educationTitle: "Education",
     education: [
@@ -44,9 +43,14 @@ const content = {
       },
     ],
     projectsTitle: "Selected Projects",
-    projectsIntro: "Selected work and source repositories.",
+    projectsIntro: "Software systems, research, and modeling work.",
+    projectGroups: {
+      software: "Software Projects",
+      research: "Research & Modeling",
+    },
     projects: [
       {
+        category: "software",
         date: "2026",
         order: 20260816,
         title: "VideoHarvester",
@@ -56,6 +60,7 @@ const content = {
         url: "https://github.com/Owl-Lee/VideoHarvester",
       },
       {
+        category: "research",
         date: "2025",
         order: 20250201,
         title: "MCM/ICM · Problem F",
@@ -66,6 +71,7 @@ const content = {
         linkLabel: "Read paper ↗",
       },
       {
+        category: "research",
         date: "2025",
         order: 20250907,
         title: "CUMCM · Drone Optimization",
@@ -76,14 +82,7 @@ const content = {
         linkLabel: "Read paper ↗",
       },
       {
-        date: "2025",
-        order: 20250906,
-        title: "Wave Energy System Optimization",
-        subtitle: "Model fitting and parameter optimization",
-        body: "Built a Random Forest fitting workflow and implemented genetic-algorithm and Bayesian-optimization parameter tuning to improve prediction accuracy and optimize damping parameters in a modeling competition project.",
-        tags: "Python · Random Forest · Genetic Algorithms · Bayesian Optimization",
-      },
-      {
+        category: "software",
         date: "2026",
         order: 20260815,
         title: "AdMind",
@@ -93,6 +92,7 @@ const content = {
         url: "https://github.com/Owl-Lee/AdMind",
       },
       {
+        category: "software",
         date: "2026",
         order: 20260814,
         title: "Sona",
@@ -102,6 +102,7 @@ const content = {
         url: "https://github.com/Owl-Lee/Sona-Player",
       },
       {
+        category: "research",
         date: "2024—25",
         order: 20250831,
         title: "Multimodal Medical Image Fusion",
@@ -118,7 +119,6 @@ const content = {
       ["2025", "ICM Mathematical Contest in Modeling", "Successful Participant"],
       ["2025", "Innovation & Entrepreneurship Competition", "Excellence Award"],
       ["2024—26", "Mathematical Modeling Club, Anhui University", "Co-Lead"],
-      ["2025", "Probability Theory", "Teaching Assistant"],
     ],
     sidebar: {
       profile: "Profile",
@@ -127,7 +127,12 @@ const content = {
       interests: "Interests",
       interestsList: ["Backend Systems", "Applied AI", "Machine Learning", "Data & Optimization"],
       tools: "Technical Skills",
-      toolsList: ["Java · Python · C · SQL", "Spring Boot · JPA · MySQL", "PyTorch · Pandas · NumPy", "Git · MATLAB"],
+      toolsList: [
+        "Python · TypeScript · C# · Dart · Java · SQL",
+        "Fastify · Flutter · PyTorch · Spring Boot",
+        "SQLite · MySQL · Supabase",
+        "Git · FFmpeg · yt-dlp · MATLAB",
+      ],
       contact: "Contact",
     },
     footer: "Designed and built by Yanbao Li.",
@@ -136,6 +141,7 @@ const content = {
     profileLabels: ["University", "Major", "Location"],
     backToTop: "Back to top ↑",
     download: "CV / Résumé",
+    mobileNav: ["Projects", "CV"],
     repoSoon: "Repository soon",
     repoSource: "View source ↗",
     photoRole: "Software & AI",
@@ -155,8 +161,7 @@ const content = {
     aboutTitle: "个人简介",
     about: [
       "我叫 Yanbao Li，也可以叫我 Yan。目前就读于石溪大学 Information Systems 专业；转学之前，我在安徽大学学习数字媒体技术。",
-      "我的兴趣主要集中在后端工程、应用型机器学习和数据驱动的问题解决。我做过 Java 后端服务、深度学习模型，也在团队竞赛中解决过数学建模与优化问题。",
-      "我不仅关注模型或功能能否运行，也希望真正理解整个系统如何工作。我尤其希望参与那些能通过扎实工程，让 AI 系统变得更可靠、更实用的工作。",
+      "我专注于构建实用的桌面端、跨平台和 AI 辅助系统。近期项目涵盖 C# 媒体工作流、Flutter / Dart 本地优先应用、TypeScript / Fastify 服务，以及涉及数据整理、参数调优和实验评估的多模态模型研究。我重视清晰的系统设计，也希望做出不止停留在演示阶段的功能。",
     ],
     educationTitle: "教育经历",
     education: [
@@ -175,9 +180,14 @@ const content = {
       },
     ],
     projectsTitle: "主要项目",
-    projectsIntro: "精选项目与代码仓库。",
+    projectsIntro: "软件系统、科研与建模项目。",
+    projectGroups: {
+      software: "软件项目",
+      research: "科研与建模",
+    },
     projects: [
       {
+        category: "software",
         date: "2026",
         order: 20260816,
         title: "VideoHarvester",
@@ -187,6 +197,7 @@ const content = {
         url: "https://github.com/Owl-Lee/VideoHarvester",
       },
       {
+        category: "research",
         date: "2025",
         order: 20250201,
         title: "MCM/ICM · Problem F",
@@ -197,6 +208,7 @@ const content = {
         linkLabel: "阅读论文 ↗",
       },
       {
+        category: "research",
         date: "2025",
         order: 20250907,
         title: "国赛 · 无人机协同优化",
@@ -207,14 +219,7 @@ const content = {
         linkLabel: "阅读论文 ↗",
       },
       {
-        date: "2025",
-        order: 20250906,
-        title: "波浪能系统优化",
-        subtitle: "模型拟合与参数优化",
-        body: "构建随机森林拟合流程，并实现遗传算法与贝叶斯优化的参数调优，以提升预测准确度并优化阻尼参数。",
-        tags: "Python · 随机森林 · 遗传算法 · 贝叶斯优化",
-      },
-      {
+        category: "software",
         date: "2026",
         order: 20260815,
         title: "AdMind",
@@ -224,6 +229,7 @@ const content = {
         url: "https://github.com/Owl-Lee/AdMind",
       },
       {
+        category: "software",
         date: "2026",
         order: 20260814,
         title: "Sona",
@@ -233,6 +239,7 @@ const content = {
         url: "https://github.com/Owl-Lee/Sona-Player",
       },
       {
+        category: "research",
         date: "2024—25",
         order: 20250831,
         title: "多模态医学图像融合",
@@ -249,7 +256,6 @@ const content = {
       ["2025", "美国大学生数学建模竞赛（ICM）", "Successful Participant"],
       ["2025", "创新创业竞赛", "优秀奖"],
       ["2024—26", "安徽大学数学建模社团", "联合负责人"],
-      ["2025", "概率论课程", "助教"],
     ],
     sidebar: {
       profile: "基本信息",
@@ -258,7 +264,12 @@ const content = {
       interests: "兴趣方向",
       interestsList: ["后端系统", "AI 应用开发", "机器学习", "数据分析与优化"],
       tools: "技术栈",
-      toolsList: ["Java · Python · C · SQL", "Spring Boot · JPA · MySQL", "PyTorch · Pandas · NumPy", "Git · MATLAB"],
+      toolsList: [
+        "Python · TypeScript · C# · Dart · Java · SQL",
+        "Fastify · Flutter · PyTorch · Spring Boot",
+        "SQLite · MySQL · Supabase",
+        "Git · FFmpeg · yt-dlp · MATLAB",
+      ],
       contact: "联系方式",
     },
     footer: "由 Yanbao Li 设计与开发。",
@@ -267,6 +278,7 @@ const content = {
     profileLabels: ["学校", "专业", "所在地"],
     backToTop: "回到顶部 ↑",
     download: "下载简历",
+    mobileNav: ["项目", "简历"],
     repoSoon: "代码即将公开",
     repoSource: "查看源码 ↗",
     photoRole: "软件工程与 AI",
@@ -303,6 +315,10 @@ export default function Home() {
             <a href="#projects">{t.nav[2]}</a>
             <a href="#awards">{t.nav[3]}</a>
             <a href="/Yanbao-Li-Resume.pdf" download>{t.download}</a>
+          </nav>
+          <nav className="mobileNav" aria-label={t.navigationLabel}>
+            <a href="#projects">{t.mobileNav[0]}</a>
+            <a href="/Yanbao-Li-Resume.pdf" download>{t.mobileNav[1]}</a>
           </nav>
           <div className="languageSwitch" aria-label={t.languageLabel}>
             <button
@@ -401,26 +417,34 @@ export default function Home() {
               <h2>{t.projectsTitle}</h2>
               <span>{t.projectsIntro}</span>
             </div>
-            <div className="projectRows">
-              {[...t.projects].sort((a, b) => b.order - a.order).map((project) => (
-                <article key={project.title}>
-                  <div className="projectDate">{project.date}</div>
-                  <div className="projectInfo">
-                    <p className="projectSubtitle">{project.subtitle}</p>
-                    <h3>{project.title}</h3>
-                    <p>{project.body}</p>
-                    <span>{project.tags}</span>
-                  </div>
-                  {project.url ? (
-                    <a className="repoStatus repoLink" href={project.url} target="_blank" rel="noreferrer">
-                      {project.linkLabel ?? t.repoSource}
-                    </a>
-                  ) : (
-                    <div className="repoStatus">{"status" in project ? project.status : t.repoSoon}</div>
-                  )}
-                </article>
-              ))}
-            </div>
+            {(["software", "research"] as const).map((group) => (
+              <section className="projectGroup" key={group} aria-labelledby={`project-group-${group}`}>
+                <h3 id={`project-group-${group}`}>{t.projectGroups[group]}</h3>
+                <div className="projectRows">
+                  {[...t.projects]
+                    .filter((project) => project.category === group)
+                    .sort((a, b) => b.order - a.order)
+                    .map((project) => (
+                      <article key={project.title}>
+                        <div className="projectDate">{project.date}</div>
+                        <div className="projectInfo">
+                          <p className="projectSubtitle">{project.subtitle}</p>
+                          <h4>{project.title}</h4>
+                          <p>{project.body}</p>
+                          <span>{project.tags}</span>
+                        </div>
+                        {project.url ? (
+                          <a className="repoStatus repoLink" href={project.url} target="_blank" rel="noreferrer">
+                            {project.linkLabel ?? t.repoSource}
+                          </a>
+                        ) : (
+                          <div className="repoStatus">{"status" in project ? project.status : t.repoSoon}</div>
+                        )}
+                      </article>
+                    ))}
+                </div>
+              </section>
+            ))}
           </section>
 
           <section className="contentSection" id="awards">

@@ -52,6 +52,15 @@ a:focus-visible, button:focus-visible {
 .identity strong { font-family: var(--serif); font-size: 1.14rem; }
 .identity span { color: var(--faint); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; }
 .navLinks { display: flex; align-items: center; gap: 24px; }
+.mobileNav { display: none; align-items: center; justify-content: flex-end; gap: 14px; }
+.mobileNav a {
+  color: #4e5663;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+.mobileNav a:hover { color: var(--accent); }
 .navLinks a {
   color: #4e5663;
   font-size: 0.79rem;
@@ -221,9 +230,20 @@ a:focus-visible, button:focus-visible {
 .sectionTitleRow { margin-bottom: 0; }
 .sectionTitleRow h2 { margin-bottom: 8px; }
 .sectionTitleRow > span { display: block; margin-bottom: 20px; color: var(--faint); font-size: 0.85rem; }
+.projectGroup + .projectGroup { margin-top: 44px; }
+.projectGroup > h3 {
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--navy);
+  color: var(--navy);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
 .projectRows article { display: grid; grid-template-columns: 62px minmax(0, 1fr) 98px; gap: 20px; padding: 28px 0; border-bottom: 1px solid var(--line); }
 .projectSubtitle { margin: 0 0 5px !important; color: var(--accent) !important; font-family: var(--font-geist-sans), Arial, sans-serif !important; font-size: 0.77rem !important; font-weight: 700; letter-spacing: 0.035em; text-transform: uppercase; }
-.projectInfo h3 { margin: 0 0 10px; font-family: var(--serif); font-size: 1.22rem; }
+.projectInfo h4 { margin: 0 0 10px; font-family: var(--serif); font-size: 1.22rem; }
 .projectInfo > p { margin: 0; color: #454f5d; font-size: 0.96rem; line-height: 1.76; }
 .projectInfo > span { display: block; margin-top: 14px; color: var(--faint); font-family: var(--font-geist-mono), monospace; font-size: 0.74rem; line-height: 1.55; }
   .repoStatus { align-self: start; color: #68717c; font-size: 0.72rem; line-height: 1.45; text-align: right; text-transform: uppercase; }
@@ -252,8 +272,9 @@ a:focus-visible, button:focus-visible {
 .footer a:hover { color: white; }
 
 @media (max-width: 900px) {
-  .headerInner { grid-template-columns: 1fr auto; }
+  .headerInner { grid-template-columns: auto 1fr auto; gap: 18px; }
   .navLinks { display: none; }
+  .mobileNav { display: flex; }
   .profileHero { grid-template-columns: 1fr 210px; gap: 38px; }
   .portrait { height: 272px; }
   .pageGrid { grid-template-columns: minmax(0, 1fr) 210px; gap: 45px; }
@@ -261,7 +282,6 @@ a:focus-visible, button:focus-visible {
 
 @media (max-width: 680px) {
   .shell { width: min(100% - 30px, 1120px); }
-  .siteHeader { position: static; }
   .headerInner { min-height: 68px; }
   .identity span { display: none; }
   .profileHero { grid-template-columns: 1fr; padding-block: 55px 40px; }
@@ -282,6 +302,10 @@ a:focus-visible, button:focus-visible {
 
 @media (max-width: 430px) {
   .identity strong { font-size: 1rem; }
+  .headerInner { gap: 11px; }
+  .mobileNav { gap: 9px; }
+  .mobileNav a { font-size: 0.68rem; }
+  .languageSwitch { padding-inline: 6px; }
   .profileCopy h1 { font-size: 3.1rem; }
   .educationBody { grid-template-columns: 1fr; }
   .schoolLogoFrame { width: 142px; }
