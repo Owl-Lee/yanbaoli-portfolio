@@ -56,9 +56,11 @@ const content = {
         order: 20260816,
         title: "VideoHarvester",
         subtitle: "C# desktop media-processing workflow",
-        body: "Engineered a C# / Windows Forms workflow around yt-dlp and FFmpeg for authorized video-page links, playlist jobs, progress tracking, duplicate protection, and recoverable task state.",
+        body: "Released a local-first Windows app for authorized YouTube and Bilibili downloads. It orchestrates yt-dlp and FFmpeg through asynchronous processing with preflight quality, size, disk-space, and destination checks, plus playlist-aware queues, platform-ID deduplication, persisted history, and unfinished-task recovery.",
         tags: "C# · Windows Forms · yt-dlp · FFmpeg",
         url: "https://github.com/Owl-Lee/VideoHarvester",
+        websiteUrl: "https://videoharvester.app/",
+        websiteLabel: "Open website ↗",
       },
       {
         category: "research",
@@ -88,9 +90,11 @@ const content = {
         order: 20260815,
         title: "AdMind",
         subtitle: "Explainable video-ad decision service",
-        body: "Built a TypeScript / Fastify decision service that fuses TwelveLabs time-coded video evidence, player-state signals, MediaPipe paused-frame vision, and deterministic ethical-policy rules.",
-        tags: "TypeScript · TwelveLabs · MediaPipe · Fastify",
+        body: "Shipped a public three-scenario demo and Fastify API for explainable long-video ad decisions. It normalizes Zod-validated TwelveLabs evidence, combines it with player and campaign constraints in a typed deterministic policy engine, and uses browser-side MediaPipe to score four pause-ad positions with auditable reasons.",
+        tags: "TypeScript · Fastify · Zod · TwelveLabs · MediaPipe",
         url: "https://github.com/Owl-Lee/AdMind",
+        websiteUrl: "https://admind-decision-console.liyanbao06.chatgpt.site/",
+        websiteLabel: "Open live demo ↗",
       },
       {
         category: "software",
@@ -98,9 +102,11 @@ const content = {
         order: 20260814,
         title: "Sona",
         subtitle: "Cross-platform local-first media system",
-        body: "Developed a Flutter / Dart music and MV player for Windows and Android with SHA-256 content deduplication, SQLite-backed library management, offline-first playback, playlists, and Supabase sync foundations.",
-        tags: "Flutter · Dart · SQLite · Supabase",
+        body: "Released Windows and Android preview builds of a local-first Flutter / Dart music and MV player. It unifies the offline library, playlists, queue, and history around SQLite, with SHA-256 deduplication, layered metadata matching through MusicBrainz and optional Chromaprint / AcoustID fallback, plus an optional Supabase synchronization foundation.",
+        tags: "Flutter · Dart · Riverpod · SQLite · Supabase",
         url: "https://github.com/Owl-Lee/Sona-Player",
+        websiteUrl: "https://owl-lee.github.io/Sona-Player/",
+        websiteLabel: "Open website ↗",
       },
       {
         category: "research",
@@ -194,9 +200,11 @@ const content = {
         order: 20260816,
         title: "VideoHarvester",
         subtitle: "C# 桌面媒体处理工作流",
-        body: "围绕 yt-dlp 与 FFmpeg 构建 C# / Windows Forms 工作流，支持已获授权的视频链接、合集任务、进度追踪、重复保护与可恢复任务状态。",
+        body: "发布面向 Windows 的本地优先视频保存工具，支持已获授权的 YouTube 与 Bilibili 单视频、播放列表及合集任务；以异步流程编排 yt-dlp 和 FFmpeg，并实现下载前画质、体积、磁盘空间与保存位置检查，以及平台 ID 去重、持久化历史和未完成任务恢复。",
         tags: "C# · Windows Forms · yt-dlp · FFmpeg",
         url: "https://github.com/Owl-Lee/VideoHarvester",
+        websiteUrl: "https://videoharvester.app/",
+        websiteLabel: "打开官网 ↗",
       },
       {
         category: "research",
@@ -226,9 +234,11 @@ const content = {
         order: 20260815,
         title: "AdMind",
         subtitle: "可解释的视频广告决策服务",
-        body: "构建 TypeScript / Fastify 决策服务，融合 TwelveLabs 带时间戳的视频证据、播放器状态、MediaPipe 暂停帧视觉分析与确定性伦理策略规则。",
-        tags: "TypeScript · TwelveLabs · MediaPipe · Fastify",
+        body: "发布包含三个决策场景的公开演示与 Fastify API：将通过 Zod 校验的 TwelveLabs 证据标准化，再与播放器状态和广告约束交给类型化确定性策略引擎；浏览器端 MediaPipe 对暂停画面的四个候选位置评分，并输出可审计的决策理由。",
+        tags: "TypeScript · Fastify · Zod · TwelveLabs · MediaPipe",
         url: "https://github.com/Owl-Lee/AdMind",
+        websiteUrl: "https://admind-decision-console.liyanbao06.chatgpt.site/",
+        websiteLabel: "打开在线演示 ↗",
       },
       {
         category: "software",
@@ -236,9 +246,11 @@ const content = {
         order: 20260814,
         title: "Sona",
         subtitle: "跨平台本地优先媒体系统",
-        body: "开发面向 Windows 与 Android 的 Flutter / Dart 音乐和 MV 播放器，包含 SHA-256 内容去重、SQLite 曲库管理、离线优先播放、歌单与 Supabase 云同步基础设施。",
-        tags: "Flutter · Dart · SQLite · Supabase",
+        body: "发布 Windows 与 Android 预览版的本地优先 Flutter / Dart 音乐与 MV 播放器，以 SQLite 统一离线曲库、歌单、队列与播放记录，并实现 SHA-256 内容去重、通过 MusicBrainz 与可选 Chromaprint / AcoustID 回退完成的分层元数据识别，以及可选 Supabase 同步基础设施。",
+        tags: "Flutter · Dart · Riverpod · SQLite · Supabase",
         url: "https://github.com/Owl-Lee/Sona-Player",
+        websiteUrl: "https://owl-lee.github.io/Sona-Player/",
+        websiteLabel: "打开官网 ↗",
       },
       {
         category: "research",
@@ -504,7 +516,28 @@ export default function Home() {
                           <p>{project.body}</p>
                           <span>{project.tags}</span>
                         </div>
-                        {project.url ? (
+                        {"websiteUrl" in project ? (
+                          <div className="projectActions">
+                            <a
+                              className="projectAction projectActionPrimary"
+                              href={project.websiteUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              aria-label={`${project.websiteLabel} — ${project.title}`}
+                            >
+                              {project.websiteLabel}
+                            </a>
+                            <a
+                              className="projectAction projectActionSecondary"
+                              href={project.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              aria-label={`${t.repoSource} — ${project.title}`}
+                            >
+                              {t.repoSource}
+                            </a>
+                          </div>
+                        ) : project.url ? (
                           <a className="repoStatus repoLink" href={project.url} target="_blank" rel="noreferrer">
                             {project.linkLabel ?? t.repoSource}
                           </a>
