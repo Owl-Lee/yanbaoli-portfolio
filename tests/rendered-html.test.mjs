@@ -27,8 +27,8 @@ test("server-renders the public English-first portfolio", async () => {
   assert.match(html, /Information Systems student/);
   assert.match(html, /https:\/\/github\.com\/Owl-Lee\/Sona-Player/);
   assert.match(html, /https:\/\/videoharvester\.app\//);
-  assert.match(html, /https:\/\/admind-decision-console\.liyanbao06\.chatgpt\.site\//);
-  assert.match(html, /https:\/\/owl-lee\.github\.io\/Sona-Player\//);
+  assert.match(html, /https:\/\/admind\.yanbaoli\.me\//);
+  assert.match(html, /https:\/\/sona\.yanbaoli\.me\//);
   assert.match(html, /Open live demo/);
   assert.match(html, /View Résumé/);
   assert.match(html, /Email Me/);

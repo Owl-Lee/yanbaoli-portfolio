@@ -103,7 +103,7 @@ const content = {
         statusLabel: "Public Demo · Web/API",
         tags: "TypeScript · Fastify · Zod · TwelveLabs · MediaPipe",
         url: "https://github.com/Owl-Lee/AdMind",
-        websiteUrl: "https://admind-decision-console.liyanbao06.chatgpt.site/",
+        websiteUrl: "https://admind.yanbaoli.me/",
         websiteLabel: "Open live demo ↗",
       },
       {
@@ -120,7 +120,7 @@ const content = {
         statusLabel: "Preview · Windows & Android",
         tags: "Flutter · Dart · Riverpod · SQLite · Supabase",
         url: "https://github.com/Owl-Lee/Sona-Player",
-        websiteUrl: "https://owl-lee.github.io/Sona-Player/",
+        websiteUrl: "https://sona.yanbaoli.me/",
         websiteLabel: "Open website ↗",
       },
       {
@@ -264,7 +264,7 @@ const content = {
         statusLabel: "公开演示 · Web/API",
         tags: "TypeScript · Fastify · Zod · TwelveLabs · MediaPipe",
         url: "https://github.com/Owl-Lee/AdMind",
-        websiteUrl: "https://admind-decision-console.liyanbao06.chatgpt.site/",
+        websiteUrl: "https://admind.yanbaoli.me/",
         websiteLabel: "打开在线演示 ↗",
       },
       {
@@ -281,7 +281,7 @@ const content = {
         statusLabel: "预览版 · Windows 与 Android",
         tags: "Flutter · Dart · Riverpod · SQLite · Supabase",
         url: "https://github.com/Owl-Lee/Sona-Player",
-        websiteUrl: "https://owl-lee.github.io/Sona-Player/",
+        websiteUrl: "https://sona.yanbaoli.me/",
         websiteLabel: "打开官网 ↗",
       },
       {
