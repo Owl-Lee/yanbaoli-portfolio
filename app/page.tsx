@@ -480,7 +480,7 @@ export default function Home() {
           </section>
           <section>
             <h2>{t.sidebar.contact}</h2>
-            <a className="email" href="mailto:liyanbao06@outlook.com">liyanbao06<br />@outlook.com</a>
+            <a className="email" href="mailto:liyanbao06@outlook.com">liyanbao06@outlook.com</a>
           </section>
         </aside>
       </div>

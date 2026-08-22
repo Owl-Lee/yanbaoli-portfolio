@@ -264,7 +264,15 @@ a:focus-visible, button:focus-visible {
 .sidebar dd { margin: 3px 0 0; color: #38414d; font-family: var(--serif); font-size: 0.94rem; line-height: 1.52; }
 .sidebar ul { margin: 0; padding: 0; list-style: none; }
 .sidebar li { padding: 9px 0; border-bottom: 1px solid var(--line); color: #424b58; font-size: 0.86rem; line-height: 1.52; }
-.sidebar .email { color: var(--navy); font-family: var(--serif); font-size: 1rem; line-height: 1.55; border-bottom: 1px solid #9097a1; }
+.sidebar .email {
+  display: inline-block;
+  color: var(--navy);
+  font-family: var(--serif);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  white-space: nowrap;
+  border-bottom: 1px solid #9097a1;
+}
 
 .footer { padding-block: 30px; background: var(--navy); color: #b8c0cc; }
 .footer .shell { display: flex; justify-content: space-between; gap: 20px; }
