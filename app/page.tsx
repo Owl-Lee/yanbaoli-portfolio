@@ -167,6 +167,7 @@ const content = {
     download: "CV / Résumé",
     viewResume: "View Résumé",
     emailMe: "Email Me",
+    writingLabel: "Writing",
     repoSoon: "Repository soon",
     repoSource: "View source ↗",
     photoRole: "Software & AI",
@@ -328,6 +329,7 @@ const content = {
     download: "下载简历",
     viewResume: "查看简历",
     emailMe: "给我发邮件",
+    writingLabel: "随笔",
     repoSoon: "代码即将公开",
     repoSource: "查看源码 ↗",
     photoRole: "软件工程与 AI",
@@ -398,6 +400,7 @@ export default function Home() {
             <a href="#education">{t.nav[1]}</a>
             <a href="#projects">{t.nav[2]}</a>
             <a href="#awards">{t.nav[3]}</a>
+            <a href="https://writing.yanbaoli.me">{t.writingLabel} ↗</a>
             <a href="/Yanbao-Li-Resume.pdf" target="_blank" rel="noreferrer">{t.download}</a>
           </nav>
           <nav className="mobileNav" aria-label={t.navigationLabel}>
@@ -416,6 +419,7 @@ export default function Home() {
                 <a href="#education" onClick={closeMobileMenu}>{t.nav[1]}</a>
                 <a href="#projects" onClick={closeMobileMenu}>{t.nav[2]}</a>
                 <a href="#awards" onClick={closeMobileMenu}>{t.nav[3]}</a>
+                <a href="https://writing.yanbaoli.me" onClick={closeMobileMenu}>{t.writingLabel} ↗</a>
                 <a href="/Yanbao-Li-Resume.pdf" target="_blank" rel="noreferrer" onClick={closeMobileMenu}>{t.download}</a>
               </div>
             )}
@@ -477,6 +481,10 @@ export default function Home() {
             <a href="https://www.linkedin.com/in/yanbao-li-772a45377/" target="_blank" rel="noreferrer">
               <Image className="socialIcon linkedinIcon" src="/brands/linkedin.svg" alt="" width={20} height={20} aria-hidden="true" unoptimized />
               <span>LinkedIn</span>
+            </a>
+            <a href="https://writing.yanbaoli.me">
+              <span aria-hidden="true">✒</span>
+              <span>{t.writingLabel}</span>
             </a>
           </div>
         </div>
