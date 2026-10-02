@@ -2,28 +2,12 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
-async function render() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
-  return worker.fetch(
-    new Request("http://localhost/", { headers: { accept: "text/html" } }),
-    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
-    { waitUntil() {}, passThroughOnException() {} },
-  );
-}
-
-test("server-renders the public English-first portfolio", async () => {
-  const response = await render();
-  assert.equal(response.status, 200);
-  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
-  assert.equal(response.headers.get("x-content-type-options"), "nosniff");
-  assert.equal(response.headers.get("x-frame-options"), "DENY");
-  const csp = response.headers.get("content-security-policy") ?? "";
-  assert.match(csp, /frame-ancestors 'none'/);
-  assert.match(csp, /style-src [^;]*https:\/\/fonts\.googleapis\.com/);
-  assert.match(csp, /font-src [^;]*https:\/\/fonts\.gstatic\.com/);
-  const html = await response.text();
+test("exports the public English-first portfolio", async () => {
+  const html = await readFile(new URL("../dist/client/index.html", import.meta.url), "utf8");
+  assert.match(html, /http-equiv="Content-Security-Policy"/i);
+  assert.match(html, /style-src [^;]*https:\/\/fonts\.googleapis\.com/);
+  assert.match(html, /font-src [^;]*https:\/\/fonts\.gstatic\.com/);
+  assert.match(html, /name="referrer" content="strict-origin-when-cross-origin"/);
   assert.match(html, /<html lang="en"/i);
 
   // Metadata, SEO and fonts.
@@ -140,4 +124,24 @@ test("keeps complete English and Chinese content in the client source", async ()
     "../public/og.png",
     "../public/favicon.png",
   ].map((path) => access(new URL(path, import.meta.url))));
+});
+
+test("exports a complete website for GitHub Pages with local assets", async () => {
+  const output = new URL("../dist/client/", import.meta.url);
+  const html = await readFile(new URL("index.html", output), "utf8");
+  assert.match(html, /Hi, I’m Yan\./);
+  assert.match(html, /Selected projects/);
+  assert.match(html, /Research &amp; modeling/);
+  assert.match(html, /rel="canonical"/);
+  assert.doesNotMatch(html, /\/_vinext\/image\?/);
+  await access(new URL(".nojekyll", output));
+  await access(new URL("404.html", output));
+
+  const localAssets = new Set(
+    [...html.matchAll(/(?:src|href)="(\/[^"#?]+)(?:[?#][^"]*)?"/g)]
+      .map((match) => match[1])
+      .filter((path) => path !== "/"),
+  );
+  assert.ok(localAssets.size > 5, "expected exported CSS, JavaScript, images and PDFs");
+  for (const path of localAssets) await access(new URL(`.${path}`, output));
 });
