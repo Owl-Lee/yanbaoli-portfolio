@@ -19,27 +19,81 @@ test("server-renders the public English-first portfolio", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   assert.equal(response.headers.get("x-content-type-options"), "nosniff");
   assert.equal(response.headers.get("x-frame-options"), "DENY");
-  assert.match(response.headers.get("content-security-policy") ?? "", /frame-ancestors 'none'/);
+  const csp = response.headers.get("content-security-policy") ?? "";
+  assert.match(csp, /frame-ancestors 'none'/);
+  assert.match(csp, /style-src [^;]*https:\/\/fonts\.googleapis\.com/);
+  assert.match(csp, /font-src [^;]*https:\/\/fonts\.gstatic\.com/);
   const html = await response.text();
-  assert.match(html, /<html lang="en">/i);
-  assert.match(html, /Yanbao Li \(Yan\) — Personal Homepage/);
-  assert.match(html, /Selected Projects/);
-  assert.match(html, /Information Systems student/);
-  assert.match(html, /https:\/\/github\.com\/Owl-Lee\/Sona-Player/);
+  assert.match(html, /<html lang="en"/i);
+
+  // Metadata, SEO and fonts.
+  assert.match(html, /Yanbao Li \(Yan\) — Software Engineering · Applied AI/);
+  assert.match(html, /rel="canonical"/);
+  assert.match(html, /og:image/);
+  assert.match(html, /og\.png/);
+  assert.match(html, /twitter:card/);
+  assert.match(html, /summary_large_image/);
+  assert.match(html, /application\/ld\+json/);
+  assert.match(html, /https:\/\/fonts\.googleapis\.com\/css2\?family=Newsreader/);
+  assert.match(html, /Noto\+Serif\+SC/);
+
+  // Accessibility landmarks.
+  assert.match(html, /href="#main-content"/);
+  assert.match(html, /id="main-content"/);
+  assert.match(html, /aria-label="Primary navigation"/);
+  assert.match(html, /aria-label="Language selection"/);
+  assert.match(html, /aria-pressed="true"/);
+
+  // Hero and sections.
+  assert.match(html, /Hi, I’m Yan\./);
+  assert.match(html, /Information Systems student at/);
+  assert.match(html, /Open to software engineering and applied AI roles/);
+  assert.match(html, /3 live projects/);
+  for (const id of ["top", "projects", "research", "about", "awards"]) {
+    assert.match(html, new RegExp(`id="${id}"`));
+  }
+  assert.match(html, /Selected projects/);
+  assert.match(html, /Research &amp; modeling/);
+  assert.match(html, /About &amp; education/);
+  assert.match(html, /Awards &amp; leadership/);
+  assert.match(html, /Skills &amp; interests/);
+  assert.match(html, /Let’s build something useful\./);
+
+  // Projects, their images and links.
+  assert.match(html, /src="\/projects\/vh\.jpg"/);
+  assert.match(html, /src="\/projects\/admind\.jpg"/);
+  assert.match(html, /src="\/projects\/sona-player\.jpg"/);
+  assert.match(html, /src="\/yanbao-li-photo\.jpg"/);
+  assert.match(html, /src="\/brands\/sbu-logo\.jpg"/);
+  assert.match(html, /src="\/brands\/ahu-logo\.png"/);
   assert.match(html, /https:\/\/videoharvester\.app\//);
+  assert.match(html, /https:\/\/github\.com\/Owl-Lee\/VideoHarvester/);
   assert.match(html, /https:\/\/admind\.yanbaoli\.me\//);
+  assert.match(html, /https:\/\/github\.com\/Owl-Lee\/AdMind/);
   assert.match(html, /https:\/\/sona\.yanbaoli\.me\//);
-  assert.match(html, /Open live demo/);
-  assert.match(html, /View Résumé/);
-  assert.match(html, /Email Me/);
+  assert.match(html, /https:\/\/github\.com\/Owl-Lee\/Sona"/);
+  assert.doesNotMatch(html, /Owl-Lee\/Sona-Player/);
+  assert.match(html, /Live demo/);
   assert.match(html, /Released · Windows/);
-  assert.match(html, /Public Demo · Web\/API/);
+  assert.match(html, /Public demo · Web \/ API/);
+  assert.match(html, /Preview · Windows &amp; Android/);
+  assert.match(html, /recovery of unfinished tasks/);
+
+  // Research, awards and contact.
+  assert.match(html, /href="\/cumcm-2025-drone-optimization-paper\.pdf"/);
+  assert.match(html, /href="\/mcm-icm-2025-problem-f-public\.pdf"/);
   assert.match(html, /Anhui University Student Innovation Competition/);
   assert.match(html, /Merit Award/);
-  assert.match(html, /unfinished-task recovery/);
-  assert.match(html, /aria-label="Language selection"/);
+  assert.match(html, /href="\/Yanbao-Li-Resume\.pdf"/);
+  assert.match(html, /View résumé/);
+  assert.match(html, /href="mailto:liyanbao06@outlook\.com"/);
+  assert.match(html, /https:\/\/writing\.yanbaoli\.me\//);
+  assert.match(html, /https:\/\/www\.linkedin\.com\/in\/yanbao-li-772a45377\//);
+  assert.match(html, /Back to top/);
+
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview/i);
   assert.doesNotMatch(html, /C:\/Users\/|E:\/Code\//i);
+  assert.doesNotMatch(html, /https:\/\/yanbaoli\.me\/Yanbao-Li-Resume\.pdf/);
 });
 
 test("keeps complete English and Chinese content in the client source", async () => {
@@ -50,21 +104,40 @@ test("keeps complete English and Chinese content in the client source", async ()
   ]);
 
   assert.match(page, /type Language = "en" \| "zh"/);
-  assert.match(page, /Selected Projects/);
-  assert.match(page, /主要项目/);
-  assert.match(page, /Primary navigation/);
-  assert.match(page, /主导航/);
-  assert.match(page, /Back to top/);
-  assert.match(page, /回到顶部/);
-  assert.match(css, /@media \(max-width: 680px\)/);
-  assert.match(css, /\.repoStatus:not\(\.repoLink\)/);
+  assert.match(page, /const content: Record<Language, Content>/);
+  const english = [
+    "Selected projects", "Research & modeling", "About & education", "Awards & leadership",
+    "Skills & interests", "Let’s build something useful.", "Primary navigation", "Back to top", "Copied",
+  ];
+  const chinese = [
+    "李彦宝", "主要项目", "科研与建模", "关于与教育经历", "奖项与经历", "技能与方向",
+    "一起做点有用的东西。", "主导航", "回到顶部", "已复制", "源码", "跳到正文",
+  ];
+  for (const phrase of [...english, ...chinese]) assert.ok(page.includes(phrase), `missing copy: ${phrase}`);
+  assert.match(page, /李彦宝（Yan）— 个人主页/);
+  assert.match(page, /searchParams\.set\("lang", "zh"\)/);
+  assert.match(page, /navigator\.clipboard\.writeText/);
+  assert.match(page, /IntersectionObserver/);
+
+  assert.match(css, /@media \(max-width: 980px\)/);
+  assert.match(css, /@media \(max-width: 760px\)/);
+  assert.match(css, /prefers-reduced-motion: reduce/);
+  assert.match(css, /html\[lang="zh-CN"\]/);
+  assert.match(css, /--serif: "Newsreader", "Noto Serif SC"/);
   assert.match(readme, /## 简体中文/);
   await Promise.all([
-    access(new URL("../public/Yanbao-Li-Resume.pdf", import.meta.url)),
-    access(new URL("../public/yanbao-li-photo.jpg", import.meta.url)),
-    access(new URL("../public/robots.txt", import.meta.url)),
-    access(new URL("../public/sitemap.xml", import.meta.url)),
-    access(new URL("../public/og.png", import.meta.url)),
-    access(new URL("../public/favicon.png", import.meta.url)),
-  ]);
+    "../public/Yanbao-Li-Resume.pdf",
+    "../public/cumcm-2025-drone-optimization-paper.pdf",
+    "../public/mcm-icm-2025-problem-f-public.pdf",
+    "../public/yanbao-li-photo.jpg",
+    "../public/projects/vh.jpg",
+    "../public/projects/admind.jpg",
+    "../public/projects/sona-player.jpg",
+    "../public/brands/sbu-logo.jpg",
+    "../public/brands/ahu-logo.png",
+    "../public/robots.txt",
+    "../public/sitemap.xml",
+    "../public/og.png",
+    "../public/favicon.png",
+  ].map((path) => access(new URL(path, import.meta.url))));
 });
